@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>使用 WSL 在 VScode上用 LLVM + Clangd + LLDB高效编程 C++ | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目的想要在 VScode 上使用 clang 编译 + LLDB 调试 + clangd 自动补全这一套工具链。理由是上述工具链是比 gcc+gdb更新的工具链，在各方面都更好，如 clang 比 gcc 报错更友好等。而且 VScode 自带补全很捞，很难用，因此想用 clangd 代替。可惜 LLDB 在今天（2021年12月）在 Windows 平台上并没有很好的支持，再考虑到很多代码都是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 WSL 在 VScode上用 LLVM + Clangd + LLDB高效编程 C++">
+<meta property="og:url" content="http://example.com/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/c++%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8%20WSL%20%E5%9C%A8%20VScode%E4%B8%8A%E7%94%A8%20LLVM%20+%20Clangd%20+%20LLDB%E9%AB%98%E6%95%88%E7%BC%96%E7%A8%8B%20C++/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目的想要在 VScode 上使用 clang 编译 + LLDB 调试 + clangd 自动补全这一套工具链。理由是上述工具链是比 gcc+gdb更新的工具链，在各方面都更好，如 clang 比 gcc 报错更友好等。而且 VScode 自带补全很捞，很难用，因此想用 clangd 代替。可惜 LLDB 在今天（2021年12月）在 Windows 平台上并没有很好的支持，再考虑到很多代码都是">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-03-07T09:35:06.000Z">
+<meta property="article:modified_time" content="2023-03-07T09:35:06.830Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/c++%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8%20WSL%20%E5%9C%A8%20VScode%E4%B8%8A%E7%94%A8%20LLVM%20+%20Clangd%20+%20LLDB%E9%AB%98%E6%95%88%E7%BC%96%E7%A8%8B%20C++/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用 WSL 在 VScode上用 LLVM + Clangd + LLDB高效编程 C++',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-07 17:35:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">使用 WSL 在 VScode上用 LLVM + Clangd + LLDB高效编程 C++</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-07T09:35:06.000Z" title="Created 2023-03-07 17:35:06">2023-03-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-03-07T09:35:06.830Z" title="Updated 2023-03-07 17:35:06">2023-03-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="使用 WSL 在 VScode上用 LLVM + Clangd + LLDB高效编程 C++"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>想要在 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=VScode&spm=1001.2101.3001.7020">VScode</a> 上使用 clang 编译 + LLDB 调试 + clangd 自动补全这一套工具链。<br>理由是上述工具链是比 gcc+gdb更新的工具链，在各方面都更好，如 clang 比 gcc 报错更友好等。而且 VScode 自带补全很捞，很难用，因此想用 clangd 代替。<br>可惜 LLDB 在今天（2021年12月）在 Windows 平台上并没有很好的支持，再考虑到很多代码都是 Linux 上跑的，不如直接配一个 Linux 环境，因此使用 WSL（Windows Subsystem for Linux）。</p>
+<h2 id="安装工具链"><a href="#安装工具链" class="headerlink" title="安装工具链"></a>安装工具链</h2><p>当前工具链版本最新为 13，但是 20.04 版本的 Ubuntu 最新为 12，默认为 10。</p>
+<h3 id="安装版本-10"><a href="#安装版本-10" class="headerlink" title="安装版本 10"></a>安装版本 10</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install clang clangd llvm liblldb-dev </span><br></pre></td></tr></table></figure>
+<h3 id="安装版本-12"><a href="#安装版本-12" class="headerlink" title="安装版本 12"></a>安装版本 12</h3><p>我用的是最新 12 版本的<br> 使用 update-alternative 来设置 clang 默认使用 12 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install clang-12 clangd-12 llvm-12 liblldb-12-dev </span><br></pre></td></tr></table></figure>
+<p><strong>可选：</strong><br> 如果你想后续均使用 12 版本，可以使用以下命令，默认将 clang 指向 12 版本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-12 100</span><br><span class="line">sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100</span><br><span class="line">sudo update-alternatives --install /usr/bin/llvm-dis llvm-dis /usr/bin/llvm-dis-12 100</span><br></pre></td></tr></table></figure>
+<h2 id="VScode-插件"><a href="#VScode-插件" class="headerlink" title="VScode 插件"></a>VScode 插件</h2><p>必装：</p>
+<ol>
+<li>clangd</li>
+<li>CodeLLDB</li>
+</ol>
+<p>选装：</p>
+<ol>
+<li>CMake</li>
+<li>Clang-Format</li>
+<li>Clang-Tidy</li>
+</ol>
+<h3 id="CodeLLDB"><a href="#CodeLLDB" class="headerlink" title="CodeLLDB"></a>CodeLLDB</h3><p>这里安装后需要下载一个包，一般会超时。</p>
+<ol>
+<li><p>查看自己架构，一般是 X86_64</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -m    </span><br><span class="line"># x86_64</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自己下载对应架构的包，<a target="_blank" rel="noopener" href="https://github.com/vadimcn/vscode-lldb/releases">下载链接</a><br> 比如这里是 x86_64 ，直接在 WSL 里面运行以下命令下载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/vadimcn/vscode-lldb/releases/download/v1.6.10/codelldb-x86_64-linux.vsix</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手动安装，选择刚刚下载到的安装包。图片参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/Dimuky/article/details/109373334">博客</a><br> <img src="https://img-blog.csdnimg.cn/2020102922474289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RpbXVreQ==,size_16,color_FFFFFF,t_70#pic_center#id=FfgLC&originHeight=954&originWidth=1654&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+</li>
+</ol>
+<h2 id="配置-VScode"><a href="#配置-VScode" class="headerlink" title="配置 VScode"></a>配置 VScode</h2><h3 id="settings-json"><a href="#settings-json" class="headerlink" title="settings.json"></a>settings.json</h3><p>按下 Ctrl+Shift+P，输入setting(设置)，找到 WSL 的选项<br><img src="https://img-blog.csdnimg.cn/800ce80d1b2f4df1aebf21695264d004.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5rW35rab55qE5a2m5Lmg56yU6K6w,size_14,color_FFFFFF,t_70,g_se,x_16#id=lx2y0&originHeight=432&originWidth=580&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br> 粘贴以下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;clangd.arguments&quot;: [</span><br><span class="line">        &quot;--compile-commands-dir=$&#123;workspaceFolder&#125;/build&quot;,//指定配置文件compelie_commands.json所在目录，这里有三种方法生成</span><br><span class="line">        // 在后台自动分析文件（基于complie_commands)</span><br><span class="line">        &quot;--background-index&quot;,</span><br><span class="line">        // 同时开启的任务数量</span><br><span class="line">        &quot;-j=12&quot;,</span><br><span class="line">        // &quot;--folding-ranges&quot;</span><br><span class="line">        // 告诉clangd用那个clang进行编译，路径参考which clang++的路径</span><br><span class="line">        &quot;--query-driver=/usr/bin/clang++&quot;,</span><br><span class="line">        // clang-tidy功能</span><br><span class="line">        &quot;--clang-tidy&quot;,</span><br><span class="line">        &quot;--clang-tidy-checks=performance-*,bugprone-*&quot;,</span><br><span class="line">        // 全局补全（会自动补充头文件）</span><br><span class="line">        &quot;--all-scopes-completion&quot;,</span><br><span class="line">        // 更详细的补全内容</span><br><span class="line">        &quot;--completion-style=detailed&quot;,</span><br><span class="line">        &quot;--function-arg-placeholders&quot;,</span><br><span class="line">        // 补充头文件的形式</span><br><span class="line">        &quot;--header-insertion=iwyu&quot;,</span><br><span class="line">        // pch优化的位置</span><br><span class="line">        &quot;--pch-storage=memory&quot;,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="生成-clangd-配置文件"><a href="#生成-clangd-配置文件" class="headerlink" title="生成 clangd 配置文件"></a>生成 clangd 配置文件</h3><p>clangd 对每个项目都需要生成一个名为 compile_commands.json 的配置文件，参见<a target="_blank" rel="noopener" href="https://_clang.llvm.org_docs_jsoncompilationdatabase/">官方文档</a></p>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>通过<a target="_blank" rel="noopener" href="https://github.com/xmake-io/xmake-vscode">xmake-vscode</a>插件配合vscode来实现对c&#x2F;c++项目的断点调试支持。<br>另外我们还需要依赖vscode的C++插件才能进行调试支持</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/c++%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8%20WSL%20%E5%9C%A8%20VScode%E4%B8%8A%E7%94%A8%20LLVM%20+%20Clangd%20+%20LLDB%E9%AB%98%E6%95%88%E7%BC%96%E7%A8%8B%20C++/">http://example.com/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/c++%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8%20WSL%20%E5%9C%A8%20VScode%E4%B8%8A%E7%94%A8%20LLVM%20+%20Clangd%20+%20LLDB%E9%AB%98%E6%95%88%E7%BC%96%E7%A8%8B%20C++/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/Github/%E5%9C%A8Terminal%E4%B8%AD%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AEGitHub/" title="在Terminal中通过代理访问GitHub"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">在Terminal中通过代理访问GitHub</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/c++%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1Win%E4%B8%8B%E7%9A%84C++%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="记录一次Win下的C++环境搭建"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">记录一次Win下的C++环境搭建</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="toc-number">2.</span> <span class="toc-text">安装工具链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%89%88%E6%9C%AC-10"><span class="toc-number">2.1.</span> <span class="toc-text">安装版本 10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%89%88%E6%9C%AC-12"><span class="toc-number">2.2.</span> <span class="toc-text">安装版本 12</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VScode-%E6%8F%92%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">VScode 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CodeLLDB"><span class="toc-number">3.1.</span> <span class="toc-text">CodeLLDB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-VScode"><span class="toc-number">4.</span> <span class="toc-text">配置 VScode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#settings-json"><span class="toc-number">4.1.</span> <span class="toc-text">settings.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-clangd-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.</span> <span class="toc-text">生成 clangd 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E8%AF%95"><span class="toc-number">4.3.</span> <span class="toc-text">调试</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/ob%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/git/" title="git">git</a><time datetime="2023-03-07T13:55:37.000Z" title="Created 2023-03-07 21:55:37">2023-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/Hexo%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/hexo-auto-category/" title="hexo-auto-category">hexo-auto-category</a><time datetime="2023-03-07T11:07:05.000Z" title="Created 2023-03-07 19:07:05">2023-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E5%AD%A6%E4%B9%A0/Vscode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="Vscode常用快捷键">Vscode常用快捷键</a><time datetime="2023-03-07T09:36:42.000Z" title="Created 2023-03-07 17:36:42">2023-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E5%AD%A6%E4%B9%A0/vscode%20%E5%92%8Cvs2019%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1/" title="vscode 和vs2019代码行数统计">vscode 和vs2019代码行数统计</a><time datetime="2023-03-07T09:36:37.000Z" title="Created 2023-03-07 17:36:37">2023-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E5%AD%A6%E4%B9%A0/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" title="学习资源">学习资源</a><time datetime="2023-03-07T09:36:33.000Z" title="Created 2023-03-07 17:36:33">2023-03-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

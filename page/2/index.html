@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-03-07 21:56:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%AF%BE%E7%A8%8B/%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92%E4%B9%A6/" title="职业生涯规划书">职业生涯规划书</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:35:54.000Z" title="Created 2023-03-07 17:35:54">2023-03-07</time></span></div><div class="content">一、自我分析（一）职业兴趣—喜欢干什么喜欢处理数据，文字等，喜欢软件的设计，编码，调试，测试等工作。
+（二）职业价值观—最看重什么
+独立思考，了解事物怎样运行和作用
+以自己的方式做事，或快或慢随自己所愿
+报酬高，能拥有自己想要的事物
+在怡人的环境里工作
+在一个公平并能与之融洽相处的管理者手下工作
+
+（三）职业能力—能够干什么做事认真，踏实，学习能力强，具有一定的创造力和承压能力，专业基础扎实。
+（四）性格特征—适合干什么做事深思熟虑，沉着冷静，善于自控，不善交际。
+（五）自我分析小结我是一个内倾的人，喜欢软件方面的工作。对于自己发展方向,最大的希望就是成为有用之才,实现自己的人生价值和自己的梦想,同时喜欢创新,做事认真、投入,有很大的责任心。通过上面的分析,我对自己有了深刻的认识,在看到自己优点的同时还发现自己有许多的不足之处,我会取别人之长来弥补自己的不足之处。
+二、职业分析家庭环境分析父母对我的期望也是比较高的，父亲学历中学，他认为知识对于我将来的发展起到很大的作用，希望我能一直学习下去。家里条件一般，致使我从小养成了独立的习惯。
+学校环境分析软件工程我感觉学院的师资都还可以，老师 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%AF%BE%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/" title="软件开发方法">软件开发方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:35:45.000Z" title="Created 2023-03-07 17:35:45">2023-03-07</time></span></div><div class="content">一、	选题内容在线购物系统
+二、	需求分析在线购物系统所包含的基本功能为：商家注册登录后可将新上架的商品信息通过系统发布到网上或对已有商品进行管理。用户通过系统浏览商品，查看商品详细信息，或者直接搜索对应商品，还可对所属订单进行管理。顾客注册登录之后，选择商品可加入购物车或下单购买，通过第三方支付平台支付，发货过程还需经过物流，还可进行售后服务。
+三、	系统设计
+四、 实验内容整合用况图分析1、确定系统边界首先，在线购物系统的外部活动者有用户，商家和顾客，这些都不属于系统本身，是系统的外部环境。其次，在线购物系统需要涉及到第三方支付平台与物流运输，他们也是系统的外部环境。第三，在线购物系统需要运行在操作系统上，运行过程中可能要进行生成文件,获取时间等操作，这涉及到操作系统的API，所以操作系统对于在线购物系统来说也是外部环境。第四，在线购物系统的使用需要涉及到手机或者电脑等设备，这些设备对于系统来说也是外部环境。2、识别参与者在线购物系统需要用户，顾客和商家的直接使用，所以他们是参与者。在线购物系统的使用过程中会涉及第三方支付平台与物流运输，所以他们也是参与者。外部系统方面有操作系统， ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/WSL%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA/wsl%202%20%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81%20DNS%20%E6%9C%8D%E5%8A%A1%E5%9C%B0%E5%9D%80%E5%8F%8A%20Linux%20%E5%92%8C%20Windows%20%E4%B8%BB%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BA%92%E7%9B%B8%E8%AE%BF%E9%97%AE%E8%AE%BE%E7%BD%AE/" title="wsl 2 设置静态 DNS 服务地址及 Linux 和 Windows 主机网络互相访问设置">wsl 2 设置静态 DNS 服务地址及 Linux 和 Windows 主机网络互相访问设置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:35:36.000Z" title="Created 2023-03-07 17:35:36">2023-03-07</time></span></div><div class="content">DNS 解析wsl 2 使用的 DNS 解析服务器设置在文件：&#x2F;etc&#x2F;resolv.conf 内设置，这是一个 link 文件，真正的文件路径是：&#x2F;run&#x2F;resolvconf&#x2F;resolv.conf，这个文件是每次 wsl 启动时自动生成的，内容如下：
+1234# This file was automatically generated by WSL. To stop automatic generation of this file, add the following entry to /etc/wsl.conf:# [network]# generateResolvConf = falsenameserver 172.24.144.1
+
+nameserver 后面的就是指定的 DNS 服务器地址。我发现有时候分配的服务器地址是无效的，如：127.0.0.53，使用 ping 来测试发现提示无法解析地址。需要设置一个固定的 DNS 地址，方法如下：
+新建文件：&#x2F;etc&#x2F;wsl.conf，内容如下：
+12[n ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/WSL%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA/vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E5%8D%A1%E4%B8%8D%E5%90%AF%E5%8A%A8%E6%97%B6%E7%9A%84service%20NetworkManager%E4%BF%AE%E5%A4%8D/" title="vmware虚拟机网卡不启动时的service NetworkManager修复">vmware虚拟机网卡不启动时的service NetworkManager修复</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:35:30.000Z" title="Created 2023-03-07 17:35:30">2023-03-07</time></span></div><div class="content">1.检查windows下的vmware虚拟机网络相关服务是否开启
+2. 检查虚拟接网络配置设置是否正确检查vmware workstation的网络配置是否符合主机的虚拟网卡配置，若不确定就点击还原默认设置
+3. 检查虚拟机Ubuntu系统右上角的网络连接是否存在若不存在，网络就可能连不上
+4. 修复（1）删除NetworkManager缓存文件
+123service NetworkManager stopsudo rm /var/lib/NetworkManager/NetworkManager.stateservice NetworkManager start
+
+（2）修改&#x2F;etc&#x2F;NetworkManager&#x2F;NetworkManager.conf
+12sudo gedit /etc/NetworkManager/NetworkManager.conf#找到managed=false修改为：managed=true
+
+（3）重启NetworkManager
+1sudo service network-manager restart
+
+就可以看到系统右 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/Mysql/MySQL%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%E7%9A%84%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E6%96%B9%E6%B3%95/" title="MySQL忘记密码的修改密码方法">MySQL忘记密码的修改密码方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:35:23.000Z" title="Created 2023-03-07 17:35:23">2023-03-07</time></span></div><div class="content">第一步：关闭Mysql服务首先先停止mysql服务。可通过net stop mysql,以管理员权限操作
+第二步：跳过Mysql密码验证进入命令提示符（管理员登陆）操作，进入mysql目录中bin文件夹下，使用mysqld -console –skip-grant-tables –shared-memory来跳过权限验证。输入执行后没有反馈，新开一个管理员窗口重新执行。（这是第二个窗口）进入目录后，确保自己已经关闭了Mysql的服务：net stop mysql关闭Mysql服务之后，继续在D:\mysql-8.0.19-winx64\bin目录下进行操作：输入mysqld -console –skip-grant-tables –shared-memory
+第三步：无密码方式进入Mysql在上述步骤之后，再打开一个管理员模式运行的cmd.exe （这是第三个窗口）进入mysql下的bin目录后，直接登录mysql不需要通过net start mysql打开mysql服务在命令行中输入以下代码
+12cd D:\mysql-8.0.19-winx64\bin(此处输入自己电脑上的安装目录 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/Github/github%20%E4%BB%A3%E7%90%86%E5%8A%A0%E9%80%9F%E6%88%96%20CDN%20%E5%8A%A0%E9%80%9F/" title="github 代理加速或 CDN 加速">github 代理加速或 CDN 加速</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:35:18.000Z" title="Created 2023-03-07 17:35:18">2023-03-07</time></span></div><div class="content">WSL 使用proxy连接Github
+12345export hostip=127.0.0.1 export hostport=10808 // 取决于win的proxy工具设置的端口号export HTTPS_PROXY=&quot;socks5://$&#123;hostip&#125;:$&#123;hostport&#125;&quot;;export HTTP_PROXY=&quot;socks5://$&#123;hostip&#125;:$&#123;hostport&#125;&quot;;export ALL_PROXY=&quot;socks5://$&#123;hostip&#125;:$&#123;hostport&#125;&quot;;
+下面的命令只针对github.com，在国内还可能会用到gitee.com，所以不能将所有的 git 站点都添加上代理。
+1234# 设置代理git config --global http.https://github.com.proxy socks5://127.0.0.1:1086# 取消代理git config - ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/Github/%E5%9C%A8Terminal%E4%B8%AD%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AEGitHub/" title="在Terminal中通过代理访问GitHub">在Terminal中通过代理访问GitHub</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:35:13.000Z" title="Created 2023-03-07 17:35:13">2023-03-07</time></span></div><div class="content">通过代理访问GitHub从国内访问GitHub速度慢是一个困扰大家很久的问题，使用代理可以提高网页浏览和下载ZIP文件的速度。但是在Terminal中，git工具在访问github.com时，是不会经过代理的，这就导致了执行clone、pull、push等命令时，传输速度只有可怜的10KiB&#x2F;s。
+
+如果使用代理之后网页加载速度还是很慢，有可能是没有打开代理的 全局模式（Global Mode）。因为GitHub在国内没有被封锁，只是被限速了，所以有的代理会“智能”地忽略对github.com的访问请求。
+
+论坛上常见解决方法是更改/etc/hosts文件，但这个方法成功率不是很高，而且因为IP地址变动的问题，每次都要重新配置。还有一个方法是通过gitee.com来中转仓库，但是这只适合用于一次性的克隆，如果要经常获取别人的提交，这种方法就过于繁琐了。下面我就来讲解一下怎么让git工具通过代理访问github.com。
+
+第一步：配置代理从代理客户端设置中找到 允许其他设备连接本机代理 选项，并输入一个代理端口：注意：
+
+每个代理的设置界面可能不一样，但是应该都有这些选项。
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/c++%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8%20WSL%20%E5%9C%A8%20VScode%E4%B8%8A%E7%94%A8%20LLVM%20+%20Clangd%20+%20LLDB%E9%AB%98%E6%95%88%E7%BC%96%E7%A8%8B%20C++/" title="使用 WSL 在 VScode上用 LLVM + Clangd + LLDB高效编程 C++">使用 WSL 在 VScode上用 LLVM + Clangd + LLDB高效编程 C++</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:35:06.000Z" title="Created 2023-03-07 17:35:06">2023-03-07</time></span></div><div class="content">目的想要在 VScode 上使用 clang 编译 + LLDB 调试 + clangd 自动补全这一套工具链。理由是上述工具链是比 gcc+gdb更新的工具链，在各方面都更好，如 clang 比 gcc 报错更友好等。而且 VScode 自带补全很捞，很难用，因此想用 clangd 代替。可惜 LLDB 在今天（2021年12月）在 Windows 平台上并没有很好的支持，再考虑到很多代码都是 Linux 上跑的，不如直接配一个 Linux 环境，因此使用 WSL（Windows Subsystem for Linux）。
+安装工具链当前工具链版本最新为 13，但是 20.04 版本的 Ubuntu 最新为 12，默认为 10。
+安装版本 101sudo apt install clang clangd llvm liblldb-dev 
+安装版本 12我用的是最新 12 版本的 使用 update-alternative 来设置 clang 默认使用 12 版本
+1sudo apt install clang-12 clangd-12 llvm-12 liblldb-12-dev  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/c++%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1Win%E4%B8%8B%E7%9A%84C++%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="记录一次Win下的C++环境搭建">记录一次Win下的C++环境搭建</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:35:01.000Z" title="Created 2023-03-07 17:35:01">2023-03-07</time></span></div><div class="content">这套环境是VSCode+MinGW（MSYS2）&#x2F;Msvc+Clangd+Xmake的配置。
+Scoop将Scoop安装到自定义目录(命令行方式)(设置环境变量）$env:SCOOP=&#39;D:\Applications\Scoop&#39; [Environment]::SetEnvironmentVariable(&#39;SCOOP&#39;, $env:SCOOP, &#39;User&#39;)
+将Scoop配置为将全局程序安装到自定义目录 SCOOP_GLOBAL(命令行方式)$env:SCOOP_GLOBAL=&#39;F:\GlobalScoopApps&#39;[Environment]::SetEnvironmentVariable(&#39;SCOOP_GLOBAL&#39;, $env:SCOOP_GLOBAL, &#39;Machine&#39;)
+安装并镜像加速https://gitee.com/glsnames/scoop-installer#31-%E4%BB%A3%E7%90%86%E5%8F%AF%E9%80%89
+MinGW网上很多教 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E7%BB%88%E7%AB%AF/zimfw%E7%BE%8E%E5%8C%96zsh%E7%BB%88%E7%AB%AF/" title="zimfw美化zsh终端">zimfw美化zsh终端</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-07T09:34:53.000Z" title="Created 2023-03-07 17:34:53">2023-03-07</time></span></div><div class="content">zsh安装
+查看自己系统是否存在zsh
+1cat /etc/shells
+
+查看是否是使用的 zsh
+1234echo $SHELL或者使用ps 查看进程
+
+切换为 zsh（macos 自带默认是 zsh，如果不是进行切换即可）
+
+ubuntu
+123456apt-get update# ubuntu下载安装zshapt install zsh -y# 切换chsh -s /bin/zshreboot
+
+zim安装
+如果你安装过卸载 ohmyzsh
+12# 卸载uninstall_oh_my_zsh
+
+安装zimfw
+1curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+
+
+如果有这个错，请把 DNS 改成8.8.8.8
+
+等待一会儿，可能需要 fq（github）
+
+zimfw安装完成
+
+
+插件和主题配置git clone [https://github.com/matyle/matyle.github.io](https://github.com/matyle/mat ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/ob%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/git/" title="git">git</a><time datetime="2023-03-07T13:55:37.000Z" title="Created 2023-03-07 21:55:37">2023-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/Hexo%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/hexo-auto-category/" title="hexo-auto-category">hexo-auto-category</a><time datetime="2023-03-07T11:07:05.000Z" title="Created 2023-03-07 19:07:05">2023-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E5%AD%A6%E4%B9%A0/Vscode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="Vscode常用快捷键">Vscode常用快捷键</a><time datetime="2023-03-07T09:36:42.000Z" title="Created 2023-03-07 17:36:42">2023-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E5%AD%A6%E4%B9%A0/vscode%20%E5%92%8Cvs2019%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1/" title="vscode 和vs2019代码行数统计">vscode 和vs2019代码行数统计</a><time datetime="2023-03-07T09:36:37.000Z" title="Created 2023-03-07 17:36:37">2023-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/07/%E5%AD%A6%E4%B9%A0/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" title="学习资源">学习资源</a><time datetime="2023-03-07T09:36:33.000Z" title="Created 2023-03-07 17:36:33">2023-03-07</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">March 2023</span><span class="card-archive-list-count">23</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">23</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-03-07T13:56:58.035Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
