@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/web/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-07-21 09:11:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/20/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/%E5%BF%AB%E9%80%9F%E6%8F%92%E5%85%A5%E6%A8%A1%E6%9D%BF/" title="快速插入模板">快速插入模板</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-20T07:34:25.000Z" title="发表于 2023-07-20 15:34:25">2023-07-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%85%8D%E7%BD%AE/">配置</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/">ob配置</a></span></div><div class="content">
+安装插件Hotkeys for templates
+
+打开Hotkeys for templates配置界面，一共分为三大块：Templator-obsidian 插件；核心模板插件；在特定的文件夹创建笔记会自动添加特定的模板
+
+
+咱们的需求是在A-专业知识文件夹下新建笔记就会自动加载特定模板
+那么，接下来就在Templator-obsidian模块或者核心模板模块中启用一个模板
+这里我是在Templator-obsidian 插件模块下启用了知识笔记模板，见下图
+[
+来到第三块Create a new file in a specified folder with a specified template
+[
+点击上图中的ADD
+[
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/20/%E8%AF%AD%E8%A8%80/Rust/%E5%AE%89%E8%A3%85/" title="安装">安装</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-20T02:27:40.000Z" title="发表于 2023-07-20 10:27:40">2023-07-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E8%A8%80/Rust/">Rust</a></span></div><div class="content">https://www.rust-lang.org/tools/install
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/19/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/%E9%99%84%E4%BB%B6%E7%AE%A1%E7%90%86/" title="附件管理">附件管理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-19T07:52:53.000Z" title="发表于 2023-07-19 15:52:53">2023-07-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%85%8D%E7%BD%AE/">配置</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/">ob配置</a></span></div><div class="content">附件管家Billfish1 Obsidian中的配置总体策略是将图片、音频等所有附件集中保存到一个文件夹中，免得把Ob搞得很乱。
+
+在Ob库中建立一个附件文件夹，也就是专门用来存储附件的，我的如下图所示
+
+
+
+打开设置→文件与链接，按下图设置
+
+
+2 Billfish中的配置打开billfish→偏好设置→素材库→添加素材库
+下图中我已把Z-附件添加进来了
+
+下图就是我在Billfish中切换为Z-附件素材库之后的样子，可以十分方便的对Ob附件进行管理了，这不会影响Ob中附件链接的哦。
+
+导入方式设置建议选择剪切模式（毕竟是开放式文件管理）
+
+复制图片自动定位和命名修改附件默认存放路径为source&#x2F;img&#x2F;blog安装Paste image rename，中间3个选项选择开启
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/19/%E8%AF%AD%E8%A8%80/c++/%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%92%8C%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E6%A3%80%E6%9F%A5%E7%9A%84%E4%B8%80%E7%AB%99%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81%20Cpp%20Linter/" title="代码格式化和静态分析检查的一站式工作流 Cpp Linter">代码格式化和静态分析检查的一站式工作流 Cpp Linter</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-19T01:17:32.000Z" title="发表于 2023-07-19 09:17:32">2023-07-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E8%A8%80/c/">c++</a></span></div><div class="content">clang-tools binaries如果你需要使用 clang-tools binaries，以 Windows 为例，通常下载指定版本的 clang-tools 需要先安装 LLVM 这个大的安装包才能获得 clang-format &amp; clang-tidy 这些工具；在 Linux 上会方便很多，可以使用命令来下载，但如果想下载指定版本的 clang-format &amp; clang-tidy 可能要面临手动下载和安装。
+clang-tools-pip 提供并支持在 Windows，Linux，MacOs 上通过命令行下载任何指定版本的 clang-tools 可执行文件。
+只需要使用 pip 安装 clang-tools （即 pip install clang-tools）后，然后通过 clang-tools 命令就可以安装任何版本的可执行文件了。
+例如，安装 clang-tools 版本 13：$ clang-tools --install 13也可以将它安装到指定目录下面：$ clang-tools --install 13 --directory .
+cl ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/08/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E5%85%B6%E4%BB%96/kms%E6%BF%80%E6%B4%BBoffice+visio2019/" title="kms激活office+visio2019">kms激活office+visio2019</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-08T11:46:22.000Z" title="发表于 2023-07-08 19:46:22">2023-07-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">解决方案</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="content">kms激活office+visio2019本文共 1315 字阅读完需 5.5 分钟
+一、kms激活office20191、卸载干净office有关产品：先把自己电脑上所有关于office的产品卸载干净，然后才开始使用office tool 安装和激活office2019；
+2、下载office Tool plus 工具：下载那个比较全的那个包吧，最大那个[即第一个安装包]； 官网： https://otp.landian.vip/zh-cn/download.html
+3、解压office tool plus 工具包，移除残留的旧office：先解压office Tool plus 工具包，利用office Tool plus 工具[Office Tool Plus.exe]，先把自己电脑的老版本office卸载了: 双击Office Tool Plus.exe，选择 工具箱 -》修复工具-》移除office-》使用office Tool plus 移除office-》开始
+4、部署：点击 部署
+
+ 按上图，选好、设置好后，点击当前页面右上角的开始部署
+5、激活：点击 激活
+
+  按 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/01/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/WSL%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA/Vmware/%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9%E6%8C%82%E8%BD%BD/" title="共享文件夹挂载">共享文件夹挂载</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-01T00:19:21.000Z" title="发表于 2023-07-01 08:19:21">2023-07-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">解决方案</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/WSL%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA/">WSL和虚拟机</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/WSL%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA/Vmware/">Vmware</a></span></div><div class="content">1sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/18/%E7%BD%91%E7%AB%99/" title="网站">网站</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-18T12:49:22.000Z" title="发表于 2023-05-18 20:49:22">2023-05-18</time></span></div><div class="content">书籍&#x2F;资源
+Account - 安娜的档案 (annas-archive.org)
+Chrome 应用商店 - 扩展程序 (google.com)
+
+服务器和网盘
+登录 - 腾讯云 (tencent.com)
+InfiniCLOUD (infini-cloud.net)
+免费香港服务器_云服务器vps_亚马逊云科技 (amazon.com)
+
+国外lab相关
+简介 - MIT6.824 (gitbook.io)
+CMU15-445数据库系统：课程简介与关系模型 - 高志远的个人主页 (gaozhiyuan.net)
+Debugging by Pretty Printing (josejg.com)
+https://blog.eleven.wiki/posts/cmu15-445-project1-buffer-pool-manager/
+
+官方文档
+xmake
+Obsidian文档咖啡豆版 | obsidian文档咖啡豆版 (coffeetea.top)
+开源软件指南 | Open Source Guides
+📗如何使用IDM | TT快下 (tttt.ee)
+
+学习网站
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/17/%E5%AD%A6%E4%B9%A0/Xmake/xmake%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/" title="xmake从入门到精通">xmake从入门到精通</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-17T10:56:09.000Z" title="发表于 2023-05-17 18:56:09">2023-05-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/Xmake/">Xmake</a></span></div><div class="content">xmake从入门到精通9：交叉编译详解 - 知乎 (zhihu.com)xmake从入门到精通10：多个子工程目标的依赖配置 - 知乎 (zhihu.com)xmake从入门到精通11：如何组织构建大型工程 - 知乎 (zhihu.com)xmake从入门到精通12：通过自定义脚本实现更灵活地配置 - 知乎 (zhihu.com)
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/13/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/%E6%8E%A5%E5%8D%95%E7%A7%81%E6%B4%BB/" title="接单私活">接单私活</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-13T08:17:19.000Z" title="发表于 2023-05-13 16:17:19">2023-05-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/">资源</a></span></div><div class="content">tutorzzz，注册流程比较简单，直接注册就好了，不过也是邀请制，也是需要内部人邀请你才能注册。
+你可以用我的邀请码：9HC0KJ，有我的邀请码审核会快点，注册步骤： 
+（1）点击链接注册填写信息：https://tutorzzz.cn/h5/#/pages/invitationPub/invitationPub/?inviteCode=9HC0KJ
+（2）注册好后，会出现运营的二维码，加企业微信审核
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/13/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/%E5%AD%A6%E4%B9%A0%E7%BD%91%E7%AB%99/" title="学习网站">学习网站</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-13T08:04:55.000Z" title="发表于 2023-05-13 16:04:55">2023-05-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/">资源</a></span></div><div class="content">Awesome
+https://github.com/sindresorhus/awesome
+首先我要推荐的当然是awesome系列。如果我对某项技术想要深入的研究，现在习惯性的会在google搜索awesome系列。比如awesome-promethues，它永远不会让我失望。
+awesome仓库是所有awesome的集合，涵盖了包括学习、工作、研究领域的各类awesome项目介绍、工程实践、原理探讨、框架扩展等。
+如果你的领导交给你一项新的技术的研究，来这里看看准没错。
+Build Your Own X
+https://github.com/codecrafters-io/build-your-own-x
+搞技术的都有一股探索精神，想要弄清楚框架或者技术背后的原理。
+这个仓库集合了一些非常hack的技术，让你体验一把盘古开天辟地的感觉。比如从零构建一个数据库、操作系统、JVM等。仓库的页面非常简陋，但它收集的内容却惊为天人。
+如果你对一些基础的计算机原理比较感兴趣，这是不可多得的开胃餐。
+Git Ignore
+https://github.com/github/gitignore ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#content-inner">7</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/20/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/%E5%BF%AB%E9%80%9F%E6%8F%92%E5%85%A5%E6%A8%A1%E6%9D%BF/" title="快速插入模板">快速插入模板</a><time datetime="2023-07-20T07:34:25.000Z" title="发表于 2023-07-20 15:34:25">2023-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/20/%E8%AF%AD%E8%A8%80/Rust/%E5%AE%89%E8%A3%85/" title="安装">安装</a><time datetime="2023-07-20T02:27:40.000Z" title="发表于 2023-07-20 10:27:40">2023-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/19/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/%E9%99%84%E4%BB%B6%E7%AE%A1%E7%90%86/" title="附件管理">附件管理</a><time datetime="2023-07-19T07:52:53.000Z" title="发表于 2023-07-19 15:52:53">2023-07-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/19/%E8%AF%AD%E8%A8%80/c++/%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%92%8C%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E6%A3%80%E6%9F%A5%E7%9A%84%E4%B8%80%E7%AB%99%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81%20Cpp%20Linter/" title="代码格式化和静态分析检查的一站式工作流 Cpp Linter">代码格式化和静态分析检查的一站式工作流 Cpp Linter</a><time datetime="2023-07-19T01:17:32.000Z" title="发表于 2023-07-19 09:17:32">2023-07-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/08/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E5%85%B6%E4%BB%96/kms%E6%BF%80%E6%B4%BBoffice+visio2019/" title="kms激活office+visio2019">kms激活office+visio2019</a><time datetime="2023-07-08T11:46:22.000Z" title="发表于 2023-07-08 19:46:22">2023-07-08</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">学习</span><span class="card-category-list-count">17</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/Xmake/"><span class="card-category-list-name">Xmake</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E6%8A%80%E5%B7%A7/"><span class="card-category-list-name">技巧</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%88%B6%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"><span class="card-category-list-name">自制编程语言</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/"><span class="card-category-list-name">资源</span><span class="card-category-list-count">6</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"><span class="card-category-list-name">解决方案</span><span class="card-category-list-count">26</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/Docker/"><span class="card-category-list-name">Docker</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/Github/"><span class="card-category-list-name">Github</span><span class="card-category-list-count">2</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">18</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">33</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">65</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-07-21T01:11:36.829Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
