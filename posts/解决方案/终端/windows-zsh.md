@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>windows+zsh | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Windows Terminal 配置 Git bash 为默认终端现在 Windows Terminal 有了图形界面，直接选择就好  具体 json 文件配置 123456789101112131415&quot;defaultProfile&quot;: &quot;&amp;#123;c891c3d2-b798-4857-83c0-89bf2ea34021&amp;#125;&quot;,    &amp;quo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows+zsh">
+<meta property="og:url" content="http://example.com/posts/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E7%BB%88%E7%AB%AF/windows-zsh.md">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Windows Terminal 配置 Git bash 为默认终端现在 Windows Terminal 有了图形界面，直接选择就好  具体 json 文件配置 123456789101112131415&quot;defaultProfile&quot;: &quot;&amp;#123;c891c3d2-b798-4857-83c0-89bf2ea34021&amp;#125;&quot;,    &amp;quo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-04-30T11:14:04.000Z">
+<meta property="article:modified_time" content="2023-05-02T11:41:33.476Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/web/favicon.png"><link rel="canonical" href="http://example.com/posts/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E7%BB%88%E7%AB%AF/windows-zsh.md"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'windows+zsh',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-02 19:41:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">windows+zsh</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-30T11:14:04.000Z" title="发表于 2023-04-30 19:14:04">2023-04-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-02T11:41:33.476Z" title="更新于 2023-05-02 19:41:33">2023-05-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">解决方案</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E7%BB%88%E7%AB%AF/">终端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="windows+zsh"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Windows-Terminal-配置-Git-bash-为默认终端"><a href="#Windows-Terminal-配置-Git-bash-为默认终端" class="headerlink" title="Windows Terminal 配置 Git bash 为默认终端"></a>Windows Terminal 配置 Git bash 为默认终端</h2><p>现在 Windows Terminal 有了图形界面，直接选择就好</p>
+<p><img src="https://pic4.zhimg.com/v2-f5ab73bb87783dd158e5bac6936ca1db_b.jpg"></p>
+<p>具体 json 文件配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot;defaultProfile&quot;: &quot;&#123;c891c3d2-b798-4857-83c0-89bf2ea34021&#125;&quot;,</span><br><span class="line">    &quot;profiles&quot;: </span><br><span class="line">    &#123;</span><br><span class="line">        &quot;defaults&quot;: </span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;list&quot;: </span><br><span class="line">        [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;commandline&quot;: &quot;D:\\Environment\\Git\\bin\\bash.exe --login -i&quot;,</span><br><span class="line">                &quot;guid&quot;: &quot;&#123;c891c3d2-b798-4857-83c0-89bf2ea34021&#125;&quot;,</span><br><span class="line">                &quot;name&quot;: &quot;Git Bash&quot;,</span><br><span class="line">                &quot;icon&quot;: &quot;D:\\Program_Files\\Git\\mingw64\\share\\git\\git-for-windows.ico&quot;</span><br><span class="line">            &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>&quot;commandline&quot;: &quot;D:\\Environment\\Git\\bin\\bash.exe --login -i&quot;,</code></p>
+<h2 id="pacman-环境配置"><a href="#pacman-环境配置" class="headerlink" title="pacman 环境配置"></a>pacman 环境配置</h2><p><a target="_blank" rel="noopener" href="https://github.com/LcJuves/lcjuves/blob/main/clang/linux-like/git_bash_install_pacman.sh">lcjuves&#x2F;git_bash_install_pacman.sh at main · LcJuves&#x2F;lcjuves · GitHub</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm /usr/bin/msys-pcre-1.dll</span><br><span class="line">pacman -S zsh</span><br></pre></td></tr></table></figure>
+<h2 id="配置默认启动zsh"><a href="#配置默认启动zsh" class="headerlink" title="配置默认启动zsh"></a>配置默认启动zsh</h2><p>在<code>../Git/etc/bash.bashrc</code>文件末尾追加以下内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Launch Zsh</span></span><br><span class="line"><span class="keyword">if</span> [ -t 1 ]; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">exec</span> zsh</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>之后每次启动&#x2F;新建<code>Git Bash</code>，都会是zsh。</p>
+<h2 id="安装-zsh-autosuggestions-插件"><a href="#安装-zsh-autosuggestions-插件" class="headerlink" title="安装 zsh-autosuggestions 插件"></a>安装 zsh-autosuggestions 插件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/posts/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E7%BB%88%E7%AB%AF/windows-zsh.md">http://example.com/posts/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E7%BB%88%E7%AB%AF/windows-zsh.md</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/%E8%AF%AD%E8%A8%80/Java/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/idea%E5%88%9B%E5%BB%BAmaven%E9%A1%B9%E7%9B%AE%E5%8D%A1%E5%9C%A8resolving-dependencies.md" title="IDEA创建maven项目卡在resolving dependencies"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">IDEA创建maven项目卡在resolving dependencies</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E5%85%B6%E4%BB%96/scoop.md" title="Scoop"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Scoop</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-Terminal-%E9%85%8D%E7%BD%AE-Git-bash-%E4%B8%BA%E9%BB%98%E8%AE%A4%E7%BB%88%E7%AB%AF"><span class="toc-number">1.</span> <span class="toc-text">Windows Terminal 配置 Git bash 为默认终端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pacman-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">pacman 环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8zsh"><span class="toc-number">3.</span> <span class="toc-text">配置默认启动zsh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-zsh-autosuggestions-%E6%8F%92%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">安装 zsh-autosuggestions 插件</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/%E5%BF%AB%E9%80%9F%E6%8F%92%E5%85%A5%E6%A8%A1%E6%9D%BF.md" title="快速插入模板">快速插入模板</a><time datetime="2023-07-20T07:34:25.000Z" title="发表于 2023-07-20 15:34:25">2023-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%AF%AD%E8%A8%80/Rust/%E5%AE%89%E8%A3%85.md" title="安装">安装</a><time datetime="2023-07-20T02:27:40.000Z" title="发表于 2023-07-20 10:27:40">2023-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/%E9%99%84%E4%BB%B6%E7%AE%A1%E7%90%86.md" title="附件管理">附件管理</a><time datetime="2023-07-19T07:52:53.000Z" title="发表于 2023-07-19 15:52:53">2023-07-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%AF%AD%E8%A8%80/c/%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%92%8C%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E6%A3%80%E6%9F%A5%E7%9A%84%E4%B8%80%E7%AB%99%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81-cpp-linter.md" title="代码格式化和静态分析检查的一站式工作流 Cpp Linter">代码格式化和静态分析检查的一站式工作流 Cpp Linter</a><time datetime="2023-07-19T01:17:32.000Z" title="发表于 2023-07-19 09:17:32">2023-07-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E5%85%B6%E4%BB%96/kms%E6%BF%80%E6%B4%BBoffice-visio2019.md" title="kms激活office+visio2019">kms激活office+visio2019</a><time datetime="2023-07-08T11:46:22.000Z" title="发表于 2023-07-08 19:46:22">2023-07-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
