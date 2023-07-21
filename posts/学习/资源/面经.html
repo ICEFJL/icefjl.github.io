@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>面经 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="《【起风了，唯有努力生存】一个本硕非科班码农的后台开发之路》https:&#x2F;&#x2F;www.yuque.com&#x2F;docs&#x2F;share&#x2F;37b016b5-4877-4611-bb4b-08ced4e3cc89《ACMer渣铜的秋招总结与经验分享》https:&#x2F;&#x2F;www.yuque.com&#x2F;docs&#x2F;share&#x2F;098ec555-c825-459b-94cd-f150cf6177c6《字节校招后端C面经》ht">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面经">
+<meta property="og:url" content="http://example.com/posts/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/%E9%9D%A2%E7%BB%8F.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="《【起风了，唯有努力生存】一个本硕非科班码农的后台开发之路》https:&#x2F;&#x2F;www.yuque.com&#x2F;docs&#x2F;share&#x2F;37b016b5-4877-4611-bb4b-08ced4e3cc89《ACMer渣铜的秋招总结与经验分享》https:&#x2F;&#x2F;www.yuque.com&#x2F;docs&#x2F;share&#x2F;098ec555-c825-459b-94cd-f150cf6177c6《字节校招后端C面经》ht">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-03-07T09:36:06.000Z">
+<meta property="article:modified_time" content="2023-03-15T12:11:42.079Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/web/favicon.png"><link rel="canonical" href="http://example.com/posts/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/%E9%9D%A2%E7%BB%8F.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面经',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-03-15 20:11:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">面经</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-07T09:36:06.000Z" title="发表于 2023-03-07 17:36:06">2023-03-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-15T12:11:42.079Z" title="更新于 2023-03-15 20:11:42">2023-03-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/">资源</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="面经"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>《【起风了，唯有努力生存】一个本硕非科班码农的后台开发之路》<a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/37b016b5-4877-4611-bb4b-08ced4e3cc89">https://www.yuque.com/docs/share/37b016b5-4877-4611-bb4b-08ced4e3cc89</a><br>《ACMer渣铜的秋招总结与经验分享》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/098ec555-c825-459b-94cd-f150cf6177c6">https://www.yuque.com/docs/share/098ec555-c825-459b-94cd-f150cf6177c6</a><br>《字节校招后端C面经》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/d913dc0d-336c-408e-870e-0ba8fcc648c7">https://www.yuque.com/docs/share/d913dc0d-336c-408e-870e-0ba8fcc648c7</a><br>《国际化电商客户端提前批1,2,3面面经(已凉)》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/19c50f7e-176b-4dd9-abe9-3d0c4a29fd8e">https://www.yuque.com/docs/share/19c50f7e-176b-4dd9-abe9-3d0c4a29fd8e</a><br>《字节跳动七面面经(提前批3轮，实习4轮)》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/a5753e11-6157-4153-a9c7-af5f18dc6948">https://www.yuque.com/docs/share/a5753e11-6157-4153-a9c7-af5f18dc6948</a><br>《字节跳动C系统工程师春招面经》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/e7bfd04c-8f94-437c-8ea6-d4841693d039">https://www.yuque.com/docs/share/e7bfd04c-8f94-437c-8ea6-d4841693d039</a><br>《字节跳动五轮技术面终于收获意向书（后端开发）》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/d3337287-f5f7-43b7-b9e7-3318e5675c8c">https://www.yuque.com/docs/share/d3337287-f5f7-43b7-b9e7-3318e5675c8c</a><br> 《字节跳动教育后端春招面经》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/42dfd66d-b981-4953-8284-bb301c3a15ad">https://www.yuque.com/docs/share/42dfd66d-b981-4953-8284-bb301c3a15ad</a><br>《字节跳动基础架构C一面二面三面》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/def11acb-d36a-462d-9b13-0982be6cfafd">https://www.yuque.com/docs/share/def11acb-d36a-462d-9b13-0982be6cfafd</a><br>《字节后端提前批-业务研发（C）1、2、3面面经，已意向》<a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/f5203921-d81f-404e-9495-d6d8bd06eaab">https://www.yuque.com/docs/share/f5203921-d81f-404e-9495-d6d8bd06eaab</a><br>《字节跳动后端一二三面_笔经》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/5ea492b4-964f-4749-9ca8-c52c4ee31074">https://www.yuque.com/docs/share/5ea492b4-964f-4749-9ca8-c52c4ee31074</a><br>《字节跳动 C客户端 一二三面 hr面 820已OC》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/abdb2590-2a27-4460-9805-dd5a53a7bffc">https://www.yuque.com/docs/share/abdb2590-2a27-4460-9805-dd5a53a7bffc</a><br>《字节提前批国际化电商后端一面二面三面已oc+意向书》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/17ca820e-76ae-498a-945b-a8bbad5f12bf">https://www.yuque.com/docs/share/17ca820e-76ae-498a-945b-a8bbad5f12bf</a><br>《字节跳动 C后端 今日头条 校招》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/2223791a-ee2a-480a-a046-adcd8f83e97f">https://www.yuque.com/docs/share/2223791a-ee2a-480a-a046-adcd8f83e97f</a><br>《字节跳动 电商后端 一二三面面经（已意向书）》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/39693ebe-4eac-4b2c-999e-e515bc3e7d50">https://www.yuque.com/docs/share/39693ebe-4eac-4b2c-999e-e515bc3e7d50</a><br>《字节客户端一二三面（已OC）》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/f6d9a46a-8b42-4323-9a26-c9cd772ab154">https://www.yuque.com/docs/share/f6d9a46a-8b42-4323-9a26-c9cd772ab154</a><br>《字节教育(上海)C++一二三面面经(已offer)》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/6aba31b2-f97e-4554-98b5-d1a1390def18">https://www.yuque.com/docs/share/6aba31b2-f97e-4554-98b5-d1a1390def18</a><br>《字节技术中台后端三面面经(许愿hr面)》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/ccad5e61-003e-400c-94e3-c39953c0bee1">https://www.yuque.com/docs/share/ccad5e61-003e-400c-94e3-c39953c0bee1</a><br>《字节抖音后端一二三面(已OC)》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/ee5ac591-4d9c-4c6f-bc8f-de090f0a8cfc">https://www.yuque.com/docs/share/ee5ac591-4d9c-4c6f-bc8f-de090f0a8cfc</a><br>《春招面经，许愿上岸》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/3354aa55-b413-4a32-abef-bcee152623c4">https://www.yuque.com/docs/share/3354aa55-b413-4a32-abef-bcee152623c4</a><br>《2022 字节跳动 提前批 四轮面试(已完结)》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/bdade855-779d-4472-b117-26e8f71b348a">https://www.yuque.com/docs/share/bdade855-779d-4472-b117-26e8f71b348a</a><br>《【字节国际化电商后端】123面》<br><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/5d68bb91-5488-4cbd-a659-66b563c39ded">https://www.yuque.com/docs/share/5d68bb91-5488-4cbd-a659-66b563c39ded</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/posts/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/%E9%9D%A2%E7%BB%8F.html">http://example.com/posts/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/%E9%9D%A2%E7%BB%8F.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/%E5%AD%A6%E4%B9%A0/%E8%B5%84%E6%BA%90/%E9%9D%A2%E8%AF%95%E5%88%A9%E5%99%A8.html" title="面试利器"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">面试利器</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E8%AF%BE%E7%A8%8B/C++%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1.html" title="C++课程设计"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C++课程设计</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/%E5%BF%AB%E9%80%9F%E6%8F%92%E5%85%A5%E6%A8%A1%E6%9D%BF.html" title="快速插入模板">快速插入模板</a><time datetime="2023-07-20T07:34:25.000Z" title="发表于 2023-07-20 15:34:25">2023-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%AF%AD%E8%A8%80/Rust/%E5%AE%89%E8%A3%85.html" title="安装">安装</a><time datetime="2023-07-20T02:27:40.000Z" title="发表于 2023-07-20 10:27:40">2023-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E9%85%8D%E7%BD%AE/ob%E9%85%8D%E7%BD%AE/%E9%99%84%E4%BB%B6%E7%AE%A1%E7%90%86.html" title="附件管理">附件管理</a><time datetime="2023-07-19T07:52:53.000Z" title="发表于 2023-07-19 15:52:53">2023-07-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%AF%AD%E8%A8%80/c++/%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%92%8C%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E6%A3%80%E6%9F%A5%E7%9A%84%E4%B8%80%E7%AB%99%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81%20Cpp%20Linter.html" title="代码格式化和静态分析检查的一站式工作流 Cpp Linter">代码格式化和静态分析检查的一站式工作流 Cpp Linter</a><time datetime="2023-07-19T01:17:32.000Z" title="发表于 2023-07-19 09:17:32">2023-07-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E5%85%B6%E4%BB%96/kms%E6%BF%80%E6%B4%BBoffice+visio2019.html" title="kms激活office+visio2019">kms激活office+visio2019</a><time datetime="2023-07-08T11:46:22.000Z" title="发表于 2023-07-08 19:46:22">2023-07-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
