@@ -17,12 +17,6 @@
 }
 
 
-/* 页脚透明 */
-#footer {
-    background: transparent !important;
-}
-
-
 /* 首页中间打字效果上方 */
 #page-header #site_title {
     color: #80bdab;
@@ -96,9 +90,9 @@ img {
 
 
 /* 鼠标悬停时的颜色 */
-#article-container a:hover {
+/* #article-container a:hover {
     color: #e58a8a;
-}
+} */
 
 
 /*a标签颜色*/
