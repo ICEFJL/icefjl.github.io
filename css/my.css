@@ -18,21 +18,15 @@
 
 
 /* 首页中间打字效果上方 */
-#page-header #site_title {
+/* #page-header #site_title {
     color: #80bdab;
-}
+} */
 
 
 /* 顶部导航栏 */
 #nav a {
     color: #f9f2f4;
 }
-
-
-/*页脚自定义字段字体颜色,也就是配置文件里的footer_custom_text*/
-/* .footer_custom_text {
-    color: #EEEEEE;
-} */
 
 
 /*鼠标样式*/
