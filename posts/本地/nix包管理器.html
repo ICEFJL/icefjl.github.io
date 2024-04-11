@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>nix包管理器 | Fu Jinlong's Blog</title><meta name="author" content="ICEFJL"><meta name="copyright" content="ICEFJL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="安装 Nixnix 是一个函数式的包管理器，想像成 apt-get 或者 homevrew 这种的，或者 npm。 在命令行执行 curl -L https:&#x2F;&#x2F;nixos.org&#x2F;nix&#x2F;install | sh 就可以自动安装 nix 如果被墙，也可以使用清华镜像站的 sh &lt;(curl https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;nix&#x2F;latest&#x2F;in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nix包管理器">
+<meta property="og:url" content="http://icefjl.github.io/posts/%E6%9C%AC%E5%9C%B0/nix%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html">
+<meta property="og:site_name" content="Fu Jinlong&#39;s Blog">
+<meta property="og:description" content="安装 Nixnix 是一个函数式的包管理器，想像成 apt-get 或者 homevrew 这种的，或者 npm。 在命令行执行 curl -L https:&#x2F;&#x2F;nixos.org&#x2F;nix&#x2F;install | sh 就可以自动安装 nix 如果被墙，也可以使用清华镜像站的 sh &lt;(curl https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;nix&#x2F;latest&#x2F;in">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://icefjl.github.io/img/web/post5.webp">
+<meta property="article:published_time" content="2024-01-02T10:35:10.000Z">
+<meta property="article:modified_time" content="2024-04-11T05:25:37.000Z">
+<meta property="article:author" content="ICEFJL">
+<meta property="article:tag" content="nix">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://icefjl.github.io/img/web/post5.webp"><link rel="shortcut icon" href="/img/web/logo.png"><link rel="canonical" href="http://icefjl.github.io/posts/%E6%9C%AC%E5%9C%B0/nix%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html"><link rel="preconnect" href="//fastly.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?025b5b66546875a0e89a0f8ac8d27dce";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'nix包管理器',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-11 13:25:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/all.min.css"><link rel="stylesheet" href="/css/my.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/avatar.jpg" onerror="onerror=null;src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/web/post5.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="Fu Jinlong's Blog"></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">nix包管理器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-02T10:35:10.000Z" title="发表于 2024-01-02 18:35:10">2024-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-11T05:25:37.000Z" title="更新于 2024-04-11 13:25:37">2024-04-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%AC%E5%9C%B0/">本地</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="nix包管理器"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="安装-Nix"><a href="#安装-Nix" class="headerlink" title="安装 Nix"></a>安装 Nix</h1><p>nix 是一个函数式的包管理器，想像成 apt-get 或者 homevrew 这种的，或者 npm。</p>
+<p>在命令行执行 <code>curl -L https://nixos.org/nix/install | sh</code> 就可以自动安装 nix</p>
+<p>如果被墙，也可以使用清华镜像站的 <code>sh &lt;(curl https://mirrors.tuna.tsinghua.edu.cn/nix/latest/install)</code></p>
+<h2 id="更换镜像-可选"><a href="#更换镜像-可选" class="headerlink" title="更换镜像 (可选)"></a>更换镜像 (可选)</h2><p>目前已知的有清华镜像站 <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/nix/">https://mirrors.tuna.tsinghua.edu.cn/help/nix/</a></p>
+<p>可以通过在 <code>~/.config/nix/nix.conf</code> 文件中写入以下内容，获得安装加速</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org/</span><br></pre></td></tr></table></figure>
+
+<p>并且执行以下命令获得源码下载加速</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable nixpkgs</span><br><span class="line">nix-channel --update</span><br></pre></td></tr></table></figure>
+
+<h1 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h1><h2 id="搜索并安装包"><a href="#搜索并安装包" class="headerlink" title="搜索并安装包"></a>搜索并安装包</h2><p>安装 Nix 包管理器后，下一步是搜索包。</p>
+<p>首先，<a target="_blank" rel="noopener" href="https://search.nixos.org/packages">访问 Nix 搜索的官方页面</a> 并输入你要安装的软件包的名称。</p>
+<p>从给定的描述中，你可以找到所需的软件包，然后选择 <code>nix-env</code> 进行永久安装。</p>
+<p>在这里，你可以添加一些额外的关键字以获得更好的搜索结果。例如，在这里，我搜索 “Firefox browser”：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../img/blog/7accd62ac8fdfa5dfab86af10bcc804a_MD5.png"></p>
+<p>我上面提到的最后一步（” 复制命令 “）什么也不做，只是为你提供了一个用于安装的命令。</p>
+<p>现在，你所要做的就是在终端中执行该命令。</p>
+<p>就我而言，它给了我以下命令来安装 Firefox：</p>
+<p> <code>nix-env -iA nixpkgs.firefox</code></p>
+<p>完成后，你可以使用以下命令列出已安装的软件包：</p>
+<p> <code>nix-env -q</code></p>
+<h3 id="安装旧版包"><a href="#安装旧版包" class="headerlink" title="安装旧版包"></a>安装旧版包</h3><p>在 nix 中，官方的 Channel 是 <a target="_blank" rel="noopener" href="https://github.com/NixOS/nixpkgs">nixpkgs</a>，这个 Channel 是通过 git 管理的。</p>
+<p>通过 <code>nix-env -qaP go</code> 可以看到，目前最新版本提交的 nixpkgs 的 Go 只有最新的三个版本 1.18、1.19 和 1.20。</p>
+<p>上文对于 Go 的安装，使用的是最新 commit 的 nixpkgs （通过 nix-channel 配置）。</p>
+<p>而 <code>nix-env</code> 还提供了基于某个特殊版本的 nixpkgs 的安装机制。如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nix-env -iA go -f https://github.com/NixOS/nixpkgs/archive/d1c3fea7ecbed758168787fe4e4a3157e52bc808.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>很多时候，我们希望，安装更旧版本的依赖时，就需要获取到包含更旧 Go 的配置的 nixpkgs 那个 commit 的快照。</p>
+<p>因此，现在的问题是，如何通过包名查询历史版本对应的 commit，然后通过上文的类似于 <code>https://github.com/NixOS/nixpkgs/archive/$commitID.tar.gz</code> 的方式即可安装旧版本的包。</p>
+<p>nixpkgs 官方并未提供该能力，但是幸运的是 nix 社区有一个站点可以查询这些信息： <a target="_blank" rel="noopener" href="https://lazamar.co.uk/nix-versions/">https://lazamar.co.uk/nix-versions/</a> 。</p>
+<p>其原理可以参见：<a target="_blank" rel="noopener" href="https://lazamar.github.io/download-specific-package-version-with-nix/">该站点作者博客</a>。</p>
+<p>此外，该项目已开源，参见： <a target="_blank" rel="noopener" href="https://github.com/lazamar/nix-package-versions">lazamar&#x2F;nix-package-versions</a>。</p>
+<p>nixpkgs 官方关于安装旧版包的讨论参见：<a target="_blank" rel="noopener" href="https://github.com/NixOS/nixpkgs/issues/9682">No way to install&#x2F;use a specific package version? #9682</a>。</p>
+<p>注意：</p>
+<ul>
+<li>中国大陆地区，建议先通过科学上网，clone 下整个 <a target="_blank" rel="noopener" href="https://github.com/NixOS/nixpkgs">https://github.com/NixOS/nixpkgs</a> 仓库（几个 G 大小），然后 checkout 到指定版本，然后在通过 <code>nix-env -f</code> 指定到 nixpkgs 根目录目录。</li>
+<li>从多个历史 commit 的 nixpkgs 安装包会导致磁盘占用快速上升。</li>
+</ul>
+<h2 id="使用包而不安装它们"><a href="#使用包而不安装它们" class="headerlink" title="使用包而不安装它们"></a>使用包而不安装它们</h2><p>到目前为止，这是 Nix 包管理器的最佳功能，因为你可以使用&#x2F;测试包甚至不用安装它！</p>
+<p>为此，你可以使用 Nix Shell，它允许你将交互式 Shell 与指定的包一起使用，关闭后，你将无法再访问该包。</p>
+<p>要使用 nix-shell 访问你喜欢的软件包，请使用以下命令语法：</p>
+<p><code>nix-shell -p &lt;package_name&gt;</code></p>
+<p>例如，我想使用一次 <code>neofetch</code>，所以我使用了以下命令：</p>
+<p><code>nix-shell -p neofetch</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../img/blog/1bb0cda327dc537bcd941f3cb0c62447_MD5.png"></p>
+<p>要退出 Shell，你所要做的就是执行 <code>exit</code> 命令：</p>
+<h2 id="使用-Nix-包管理器更新包"><a href="#使用-Nix-包管理器更新包" class="headerlink" title="使用 Nix 包管理器更新包"></a>使用 Nix 包管理器更新包</h2><p>使用 Nix 包管理器更新包非常简单。</p>
+<p>要更新软件包，首先，你需要使用以下命令更新频道：</p>
+<p> <code>nix-channel --update</code></p>
+<p>接下来，你可以通过试运行更新命令来列出过时的软件包：</p>
+<p> <code>nix-env --upgrade --dry-run</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../img/blog/eaba90663a964c56bdcc715813bc86f2_MD5.png"></p>
+<p>要更新单个包，请使用以下命令：</p>
+<p> <code>nix-env -u &lt;Package_name&gt;</code></p>
+<p>如果你想一次更新所有软件包，请使用以下命令：</p>
+<p> <code>nix-env -u</code></p>
+<h2 id="使用-Nix-包管理器删除包"><a href="#使用-Nix-包管理器删除包" class="headerlink" title="使用 Nix 包管理器删除包"></a>使用 Nix 包管理器删除包</h2><p>要删除软件包，你只需按以下方式执行 <code>nix-env</code> 命令即可：</p>
+<p> <code>nix-env --uninstall [package_name]</code></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.rectcircle.cn/posts/nix-1-package-manager/">Nix 详解（一） 像传统包管理器一样使用 Nix :: Rectcircle Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rectcircle.cn/posts/nix-2-project-external-dependencies-manager/">Nix 详解（二） 项目外部依赖管理 :: Rectcircle Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rectcircle.cn/posts/nix-3-nix-dsl/">Nix 详解（三） nix 领域特定语言 :: Rectcircle Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rectcircle.cn/posts/nix-4-http-binary-cache/">Nix 详解（四） HTTP 二进制缓存详解 :: Rectcircle Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rectcircle.cn/posts/nix-5-how-to-use-in-rd-group/">Nix 详解（五）在研发团队中落地设计 :: Rectcircle Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rectcircle.cn/posts/nix-6-cheat-sheet/">Nix 详解（六） 备忘单 :: Rectcircle Blog</a></li>
+</ul>
+<h1 id="通过-NixOS-释放其全部潜力"><a href="#通过-NixOS-释放其全部潜力" class="headerlink" title="通过 NixOS 释放其全部潜力"></a>通过 NixOS 释放其全部潜力</h1><p>如果你喜欢 Nix 包管理器背后的想法，请相信我，你一定会喜欢 <a target="_blank" rel="noopener" href="https://nixos.org/">NixOS</a>。</p>
+<p>仅使用一个配置文件来复制整个系统就足以说服我切换到 NixOS，但还有更多原因：</p>
+<p>我喜欢 NixOS。以至于我写了整个系列，这样你就不必阅读文档（基础知识）：</p>
+<blockquote>
+<p><strong><a target="_blank" rel="noopener" href="https://linux.cn/article-15606-1.html">NixOS 系列</a></strong><br><strong><a target="_blank" rel="noopener" href="https://www.rectcircle.cn/posts/nixos/">NixOS 指南 :: Rectcircle Blog</a></strong></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://icefjl.github.io">ICEFJL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://icefjl.github.io/posts/%E6%9C%AC%E5%9C%B0/nix%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html">http://icefjl.github.io/posts/本地/nix包管理器.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://icefjl.github.io" target="_blank">Fu Jinlong's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/nix/">nix</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/%E6%9C%AC%E5%9C%B0/%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84.html" title="键盘按键映射"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post6.webp" onerror="onerror=null;src='/img/web/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">键盘按键映射</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/avatar.jpg" onerror="this.onerror=null;this.src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ICEFJL</div><div class="author-info__description">Fu Jinlong's Blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/icefjl"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:fujinlong24@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Nix"><span class="toc-number">1.</span> <span class="toc-text">安装 Nix</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%8D%A2%E9%95%9C%E5%83%8F-%E5%8F%AF%E9%80%89"><span class="toc-number">1.1.</span> <span class="toc-text">更换镜像 (可选)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%85%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">包管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%B9%B6%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">2.1.</span> <span class="toc-text">搜索并安装包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E5%8C%85"><span class="toc-number">2.1.1.</span> <span class="toc-text">安装旧版包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8C%85%E8%80%8C%E4%B8%8D%E5%AE%89%E8%A3%85%E5%AE%83%E4%BB%AC"><span class="toc-number">2.2.</span> <span class="toc-text">使用包而不安装它们</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Nix-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E6%9B%B4%E6%96%B0%E5%8C%85"><span class="toc-number">2.3.</span> <span class="toc-text">使用 Nix 包管理器更新包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Nix-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E5%88%A0%E9%99%A4%E5%8C%85"><span class="toc-number">2.4.</span> <span class="toc-text">使用 Nix 包管理器删除包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">2.4.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E8%BF%87-NixOS-%E9%87%8A%E6%94%BE%E5%85%B6%E5%85%A8%E9%83%A8%E6%BD%9C%E5%8A%9B"><span class="toc-number">3.</span> <span class="toc-text">通过 NixOS 释放其全部潜力</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/%E6%9C%AC%E5%9C%B0/nix%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html" title="nix包管理器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post5.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="nix包管理器"/></a><div class="content"><a class="title" href="/posts/%E6%9C%AC%E5%9C%B0/nix%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html" title="nix包管理器">nix包管理器</a><time datetime="2024-01-02T10:35:10.000Z" title="发表于 2024-01-02 18:35:10">2024-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E6%9C%AC%E5%9C%B0/%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84.html" title="键盘按键映射"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post6.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="键盘按键映射"/></a><div class="content"><a class="title" href="/posts/%E6%9C%AC%E5%9C%B0/%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84.html" title="键盘按键映射">键盘按键映射</a><time datetime="2023-12-28T15:05:50.000Z" title="发表于 2023-12-28 23:05:50">2023-12-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Ubuntu%E4%B8%8Bbochs%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4.html" title="Ubuntu下bochs安装步骤"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post5.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="Ubuntu下bochs安装步骤"/></a><div class="content"><a class="title" href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Ubuntu%E4%B8%8Bbochs%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4.html" title="Ubuntu下bochs安装步骤">Ubuntu下bochs安装步骤</a><time datetime="2023-12-10T10:13:34.000Z" title="发表于 2023-12-10 18:13:34">2023-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%BD%91%E7%BB%9C/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/ssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8.html" title="ssh连接服务器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post7.jpg" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="ssh连接服务器"/></a><div class="content"><a class="title" href="/posts/%E7%BD%91%E7%BB%9C/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/ssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8.html" title="ssh连接服务器">ssh连接服务器</a><time datetime="2023-12-10T07:55:58.000Z" title="发表于 2023-12-10 15:55:58">2023-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%A4%A7%E6%9D%82%E7%83%A9.html" title="大杂烩"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post9.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="大杂烩"/></a><div class="content"><a class="title" href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%A4%A7%E6%9D%82%E7%83%A9.html" title="大杂烩">大杂烩</a><time datetime="2023-12-03T07:37:14.000Z" title="发表于 2023-12-03 15:37:14">2023-12-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/web/post5.webp')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By ICEFJL</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://fastly.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadGiscus () {
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  const config = Object.assign({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'icefjl/icefjl.github.io',
+    'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzOTEwMjIzNzg=',
+    'data-category-id': 'DIC_kwDOF06HKs4CYIVf',
+    'data-mapping': 'pathname',
+    'data-theme': nowTheme,
+    'data-reactions-enabled': '1',
+    crossorigin: 'anonymous',
+    async: true
+  },{"data-strict":1,"data-lang":"zh-CN","data-input-position":"top"})
+
+  let ele = document.createElement('script')
+  for (let key in config) {
+    ele.setAttribute(key, config[key])
+  }
+  document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function changeGiscusTheme () {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  sendMessage({
+    setConfig: {
+      theme: theme
+    }
+  });
+}
+
+if ('Giscus' === 'Giscus' || !false) {
+  if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+  else loadGiscus()
+} else {
+  function loadOtherComment () {
+    loadGiscus()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>

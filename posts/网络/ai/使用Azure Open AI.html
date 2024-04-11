@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>使用Azure Open AI | Fu Jinlong's Blog</title><meta name="author" content="ICEFJL"><meta name="copyright" content="ICEFJL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="申请参考分享Azure申请及使用OpenAI的经历 - 知乎 (zhihu.com) 准备如果是教育邮箱，可以通过 这个地址 开通 azure 服务，会多一个 Azure for Students 的订阅，再用这个订阅的 id 再去申请一次 openai 就可以得到 1 年 +100 刀的使用期限，可在该网页查看剩余额度 重新激活已禁用的面向学生的 Azure 订阅 - Microsoft Cos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Azure Open AI">
+<meta property="og:url" content="http://icefjl.github.io/posts/%E7%BD%91%E7%BB%9C/ai/%E4%BD%BF%E7%94%A8Azure%20Open%20AI.html">
+<meta property="og:site_name" content="Fu Jinlong&#39;s Blog">
+<meta property="og:description" content="申请参考分享Azure申请及使用OpenAI的经历 - 知乎 (zhihu.com) 准备如果是教育邮箱，可以通过 这个地址 开通 azure 服务，会多一个 Azure for Students 的订阅，再用这个订阅的 id 再去申请一次 openai 就可以得到 1 年 +100 刀的使用期限，可在该网页查看剩余额度 重新激活已禁用的面向学生的 Azure 订阅 - Microsoft Cos">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://icefjl.github.io/img/web/post6.webp">
+<meta property="article:published_time" content="2023-08-06T07:32:29.000Z">
+<meta property="article:modified_time" content="2024-03-24T02:29:25.000Z">
+<meta property="article:author" content="ICEFJL">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://icefjl.github.io/img/web/post6.webp"><link rel="shortcut icon" href="/img/web/logo.png"><link rel="canonical" href="http://icefjl.github.io/posts/%E7%BD%91%E7%BB%9C/ai/%E4%BD%BF%E7%94%A8Azure%20Open%20AI.html"><link rel="preconnect" href="//fastly.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?025b5b66546875a0e89a0f8ac8d27dce";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用Azure Open AI',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-24 10:29:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/all.min.css"><link rel="stylesheet" href="/css/my.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/avatar.jpg" onerror="onerror=null;src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/web/post6.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="Fu Jinlong's Blog"></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">使用Azure Open AI</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-06T07:32:29.000Z" title="发表于 2023-08-06 15:32:29">2023-08-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-24T02:29:25.000Z" title="更新于 2024-03-24 10:29:25">2024-03-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BD%91%E7%BB%9C/ai/">ai</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="使用Azure Open AI"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="申请"><a href="#申请" class="headerlink" title="申请"></a>申请</h1><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/614242045">分享Azure申请及使用OpenAI的经历 - 知乎 (zhihu.com)</a></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>如果是教育邮箱，可以通过 <a href="http://link.zhihu.com/?target=https://azure.microsoft.com/zh-cn/free/students/">这个地址</a> 开通 azure 服务，会多一个 Azure for Students 的订阅，再用这个订阅的 id 再去申请一次 openai 就可以得到 1 年 +100 刀的使用期限，可在该网页查看剩余额度 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cost-management-billing/manage/azurestudents-subscription-disabled">重新激活已禁用的面向学生的 Azure 订阅 - Microsoft Cost Management | Microsoft Learn</a></p>
+<p>此外，可以用微信账号申请一个腾讯企业邮箱，就选最基础的免费版就行了，审批很快，半天时间都不到。</p>
+<h2 id="申请-1"><a href="#申请-1" class="headerlink" title="申请"></a>申请</h2><p>登录 <a target="_blank" rel="noopener" href="http://portal.azure.com/">http://portal.azure.com</a> 后，依次查找：所有服务——AI+ 机器学习——认知服务——Azure OpenAI。点击创建，会提示需要提交申请才能使用。<br>可以根据这篇文章来申请<br><a target="_blank" rel="noopener" href="https://51.ruyo.net/18402.html">微软Azure申请OpenAI以及部署使用教程 - 如有乐享 (ruyo.net)</a></p>
+<h2 id="开通"><a href="#开通" class="headerlink" title="开通"></a>开通</h2><p>其实早在之前文章中也提到了：<a target="_blank" rel="noopener" href="https://51.ruyo.net/18360.html">目前OpenAI账号开通获取高额度方法分享</a></p>
+<p>首先，你需要有一个 Azure。可用是免费试用版，Azure Stu 版，Azure 企业版 等等。</p>
+<p><a target="_blank" rel="noopener" href="https://aka.ms/oai/access">申请开通OpenAI</a>&#x2F;<a target="_blank" rel="noopener" href="https://aka.ms/oai/get-gpt4">申请GPT-4</a></p>
+<p>第二，申请的时候官方也表明需要用企业邮箱！不用用 gmail，outlook 等</p>
+<p>第三，还需要填写企业官网（官网域名和邮箱域名得一致）</p>
+<p>然后就是看运气了等审核通过了。短的 4 小时，长的可能得几个月。</p>
+<p>部分人审核期间可能需要补充一些资料。也有几个小时就通过的。</p>
+<p>当然了这个申请也是有技巧的。有朋友基本上目前 100% 几小时就通过了。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="创建-OpenAI"><a href="#创建-OpenAI" class="headerlink" title="创建 OpenAI"></a>创建 OpenAI</h3><p>1，搜索资源 OpenAI 可找到 Azure OpenAI。点击创建！</p>
+<p>填写信息！名称随意！定价选 S0 区域，可选美国东部（法国和欧洲，看你使用情况可选）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/ad02411904c665a355c1e3dd23cb896c_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<p>2，网络选择所有网络 即可。</p>
+<p>3，标记。没有啥标记的直接下一步！</p>
+<p>4，验证相关信息，验证通过后，直接点击创建即可！</p>
+<p>5，稍等几分钟，部署完成！</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/84dfe46ea1f2187b1a81a010c610c775_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<h3 id="记录关键信息"><a href="#记录关键信息" class="headerlink" title="记录关键信息"></a>记录关键信息</h3><p>打开新建的 OpenAI 有几个关键的内容，保存好后面会使用！</p>
+<p>1，终结点 ，如图就是我们专属的接口域名地址</p>
+<p>2，密钥，点击管理密钥可看见密钥内容</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/3634349193426f351fb14c307d3dfdc3_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<h3 id="模型部署"><a href="#模型部署" class="headerlink" title="模型部署"></a>模型部署</h3><p>1，点击 模型部署，点击 【管理部署】按钮。浏览器会在当前页面打开模型管理的另一个平台。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/a2079f222dd28cac03e618ae1d756cb2_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<p>2，在 Azure AI 平台中，点击【新建部署】</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/178f45db5c416f32e4e5a3df1463113e_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<p>3，这里需要选择模型，以及填写部署名称。</p>
+<p>模型，选择 gpt-35-turbo（如果你有 gpt-4.0，选择这个也行）</p>
+<p><strong>部署名，填写即可。这个部署名后面也会用到！</strong></p>
+<p>高级选项， 可设置 Token 上限，最高支持 240K（酌情选择设置）</p>
+<p>自定义过滤器，按需设置即可</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/308ff3dc807d2b80c9321479bd5fe6ef_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/29014f630df013de45c8823ed5ed54ec_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<p>4，分分钟创建成功！Azure AI 中也提供了和可以直接聊天的功能，操场设置各类参数。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/4806b1e974ad57d2bb0e0cb4956c4f96_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/1a95fb11920c7fa68a55774c5edafac1_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<p>5，体验自带的会话功能。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/50996137e171b1e6a85c596e2f51913f_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>Azure OpenAI 和 OpenAI 官方的调用方式基本相似。只有 3 处需要注意。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="终结点"><a href="#终结点" class="headerlink" title="终结点"></a>终结点</h3><p>OpenAI 官方是 api.openai.com</p>
+<p>Azure OpenAI 则是 ruyo-openai.openai.azure.com （ 每个都不太一样，别直接使用这个哈）</p>
+<h3 id="APIKEY"><a href="#APIKEY" class="headerlink" title="APIKEY"></a>APIKEY</h3><p>OpenAI 官方是是以 sky 开头的一段</p>
+<p>Azure OpenAI 是无规律的一段</p>
+<h3 id="部署名称（Deployment-Name）"><a href="#部署名称（Deployment-Name）" class="headerlink" title="部署名称（Deployment Name）"></a>部署名称（Deployment Name）</h3><p>部署模型时填写的名称</p>
+<h2 id="HTTP-调用"><a href="#HTTP-调用" class="headerlink" title="HTTP 调用"></a>HTTP 调用</h2><p>接口地址：<a target="_blank" rel="noopener" href="https://ruyo-openai.openai.azure.com/openai/deployments/ruyo-gpt/chat/completions/?api-version=2023-05-15">https://ruyo-openai.openai.azure.com/openai/deployments/ruyo-gpt/chat/completions/?api-version=2023-05-15</a></p>
+<p>请求方式：POST</p>
+<p>BODY：</p>
+<p>这部分和 OpenAI 基本一致！这里不做太多的介绍！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;messages&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;role&quot;: &quot;system&quot;,</span><br><span class="line">            &quot;content&quot;: &quot;如有乐享博客AI助手&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;role&quot;: &quot;user&quot;,</span><br><span class="line">            &quot;content&quot;: &quot;如有乐享博客怎么样&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../img/blog/2f0d23c4f1057b0dc765bfa04a9cfcd4_MD5.jpg" alt="微软Azure申请OpenAI以及部署使用教程"></p>
+<p>更多其他调用方式，参考官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/chatgpt-quickstart?tabs=bash&pivots=programming-language-studio">https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/chatgpt-quickstart?tabs=bash&amp;pivots=programming-language-studio</a></p>
+<h2 id="CloudFlare-代理"><a href="#CloudFlare-代理" class="headerlink" title="CloudFlare 代理"></a>CloudFlare 代理</h2><p>由于大多数互联网产品暂不支持 <code>Azure OpenAI</code> 的调用接口，我们可以使用 <a href="https://link.juejin.cn/?target=https://dash.cloudflare.com/login" title="https://dash.cloudflare.com/login">CloudFlare Workers</a> 进行代理设置。</p>
+<p>首先注册该网站的账户，然后按以下步骤操作：</p>
+<ol>
+<li><p>创建一个 Workers</p>
+</li>
+<li><p>阅读 github 文档 <a target="_blank" rel="noopener" href="https://github.com/haibbo/cf-openai-azure-proxy">github.com&#x2F;haibbo&#x2F;cf-o…</a></p>
+</li>
+</ol>
+<h2 id="部署-ChatGPT-Next-Web"><a href="#部署-ChatGPT-Next-Web" class="headerlink" title="部署 ChatGPT-Next-Web"></a>部署 ChatGPT-Next-Web</h2><p><a target="_blank" rel="noopener" href="https://github.com/Yidadaa/ChatGPT-Next-Web/issues/371">[Feature] 添加对 Azure OpenAI API 的支持 · Issue #371 · Yidadaa&#x2F;ChatGPT-Next-Web (github.com)</a></p>
+<p>可以根据文档 <a target="_blank" rel="noopener" href="https://github.com/Yidadaa/ChatGPT-Next-Web">Yidadaa&#x2F;ChatGPT-Next-Web:   一键拥有你自己的跨平台 ChatGPT 应用。)</a> 在 Vercel 部署 ChatGPT-Next-Web，配置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BASE_URL：cloudfare worker 部署的URL</span><br><span class="line">OPENAI_API_KEY：在Azure Portal OpenAI 找到 API key，有两个key，用其中一个即可</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>或者搭配 <a target="_blank" rel="noopener" href="https://github.com/diemus/azure-openai-proxy">stulzq&#x2F;azure-openai-proxy</a> 使用，可以直接 <code>docker-compose</code> 来启动。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">chatgpt-next-web:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">yidadaa/chatgpt-next-web</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">3000</span><span class="string">:3000</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">OPENAI_API_KEY:</span> <span class="string">&lt;Auzre</span> <span class="string">OpenAI</span> <span class="string">API</span> <span class="string">Key&gt;</span></span><br><span class="line">      <span class="attr">BASE_URL:</span> <span class="string">http://azure-openai:8080</span></span><br><span class="line">      <span class="attr">DISABLE_GPT4:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">CODE:</span> <span class="string">&quot;password&quot;</span></span><br><span class="line">      <span class="attr">HIDE_BALANCE_QUERY:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">azure-openai</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">azure-openai</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">chatgpt-ns</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">azure-openai:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">stulzq/azure-openai-proxy</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">AZURE_OPENAI_ENDPOINT:</span> <span class="string">&lt;Auzre</span> <span class="string">OpenAI</span> <span class="string">API</span> <span class="string">Endpoint&gt;</span></span><br><span class="line">      <span class="attr">AZURE_OPENAI_MODEL_MAPPER:</span> <span class="string">&lt;Auzre</span> <span class="string">OpenAI</span> <span class="string">API</span> <span class="string">Deployment</span> <span class="string">Mapper&gt;</span></span><br><span class="line">      <span class="attr">AZURE_OPENAI_API_VER:</span> <span class="number">2023-05-15</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">chatgpt-ns</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">chatgpt-ns:</span></span><br><span class="line">    <span class="attr">driver:</span> <span class="string">bridge</span></span><br></pre></td></tr></table></figure>
+
+<p>启动有 3 个环境变量需要配置：</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OPENAI_API_KEY</td>
+<td>Azure <strong>密钥和终结点</strong> 里提供的 Key</td>
+</tr>
+<tr>
+<td>AZURE_OPENAI_ENDPOINT</td>
+<td>Azure <strong>密钥和终结点</strong> 里提供的终结点</td>
+</tr>
+<tr>
+<td>AZURE_OPENAI_MODEL_MAPPER</td>
+<td>Azure 部署模型名称映射到 OpenAI 官方模型名称</td>
+</tr>
+</tbody></table>
+<p>特别说明一下 <code>AZURE_OPENAI_MODEL_MAPPER</code> 使用 OpenAI 官方标准发起的请求里包含的模型名称是固定的，在这里可以 <a target="_blank" rel="noopener" href="https://platform.openai.com/docs/models">查询</a>，而在 Azure OpenAI 模型部署时是可以自定义名称的，请求 Azure yes 需要提供这个部署模型的名称，所以建立了一个映射关系。</p>
+<p>比如我在 Azure 部署了一个 <code>gpt-3.5-turbo</code> 模型，我设置的部署名称为：<code>xc-gpt-35</code>，此时我的设置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">AZURE_OPENAI_MODEL_MAPPER:</span> <span class="string">gpt-3.5-turbo=xc-gpt-35</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://icefjl.github.io">ICEFJL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://icefjl.github.io/posts/%E7%BD%91%E7%BB%9C/ai/%E4%BD%BF%E7%94%A8Azure%20Open%20AI.html">http://icefjl.github.io/posts/网络/ai/使用Azure Open AI.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://icefjl.github.io" target="_blank">Fu Jinlong's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/%E5%BD%92%E6%A1%A3/%E8%B5%84%E6%BA%90.html" title="资源"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post4.jpg" onerror="onerror=null;src='/img/web/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">资源</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E5%BD%92%E6%A1%A3/%E9%A1%B9%E7%9B%AE%E8%BD%AF%E4%BB%B6%E6%94%B6%E8%97%8F.html" title="项目软件收藏"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post1.jpeg" onerror="onerror=null;src='/img/web/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">项目软件收藏</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/avatar.jpg" onerror="this.onerror=null;this.src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ICEFJL</div><div class="author-info__description">Fu Jinlong's Blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/icefjl"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:fujinlong24@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7"><span class="toc-number">1.</span> <span class="toc-text">申请</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7-1"><span class="toc-number">1.3.</span> <span class="toc-text">申请</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E9%80%9A"><span class="toc-number">1.4.</span> <span class="toc-text">开通</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.5.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-OpenAI"><span class="toc-number">1.5.1.</span> <span class="toc-text">创建 OpenAI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%85%B3%E9%94%AE%E4%BF%A1%E6%81%AF"><span class="toc-number">1.5.2.</span> <span class="toc-text">记录关键信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2"><span class="toc-number">1.5.3.</span> <span class="toc-text">模型部署</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.1.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%88%E7%BB%93%E7%82%B9"><span class="toc-number">2.1.1.</span> <span class="toc-text">终结点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#APIKEY"><span class="toc-number">2.1.2.</span> <span class="toc-text">APIKEY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%90%8D%E7%A7%B0%EF%BC%88Deployment-Name%EF%BC%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">部署名称（Deployment Name）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E8%B0%83%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">HTTP 调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CloudFlare-%E4%BB%A3%E7%90%86"><span class="toc-number">2.3.</span> <span class="toc-text">CloudFlare 代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2-ChatGPT-Next-Web"><span class="toc-number">2.4.</span> <span class="toc-text">部署 ChatGPT-Next-Web</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/%E6%9C%AC%E5%9C%B0/nix%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html" title="nix包管理器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post5.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="nix包管理器"/></a><div class="content"><a class="title" href="/posts/%E6%9C%AC%E5%9C%B0/nix%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html" title="nix包管理器">nix包管理器</a><time datetime="2024-01-02T10:35:10.000Z" title="发表于 2024-01-02 18:35:10">2024-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E6%9C%AC%E5%9C%B0/%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84.html" title="键盘按键映射"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post6.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="键盘按键映射"/></a><div class="content"><a class="title" href="/posts/%E6%9C%AC%E5%9C%B0/%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84.html" title="键盘按键映射">键盘按键映射</a><time datetime="2023-12-28T15:05:50.000Z" title="发表于 2023-12-28 23:05:50">2023-12-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Ubuntu%E4%B8%8Bbochs%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4.html" title="Ubuntu下bochs安装步骤"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post5.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="Ubuntu下bochs安装步骤"/></a><div class="content"><a class="title" href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Ubuntu%E4%B8%8Bbochs%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4.html" title="Ubuntu下bochs安装步骤">Ubuntu下bochs安装步骤</a><time datetime="2023-12-10T10:13:34.000Z" title="发表于 2023-12-10 18:13:34">2023-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%BD%91%E7%BB%9C/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/ssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8.html" title="ssh连接服务器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post7.jpg" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="ssh连接服务器"/></a><div class="content"><a class="title" href="/posts/%E7%BD%91%E7%BB%9C/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/ssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8.html" title="ssh连接服务器">ssh连接服务器</a><time datetime="2023-12-10T07:55:58.000Z" title="发表于 2023-12-10 15:55:58">2023-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%A4%A7%E6%9D%82%E7%83%A9.html" title="大杂烩"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post9.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="大杂烩"/></a><div class="content"><a class="title" href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%A4%A7%E6%9D%82%E7%83%A9.html" title="大杂烩">大杂烩</a><time datetime="2023-12-03T07:37:14.000Z" title="发表于 2023-12-03 15:37:14">2023-12-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/web/post6.webp')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By ICEFJL</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://fastly.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadGiscus () {
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  const config = Object.assign({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'icefjl/icefjl.github.io',
+    'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzOTEwMjIzNzg=',
+    'data-category-id': 'DIC_kwDOF06HKs4CYIVf',
+    'data-mapping': 'pathname',
+    'data-theme': nowTheme,
+    'data-reactions-enabled': '1',
+    crossorigin: 'anonymous',
+    async: true
+  },{"data-strict":1,"data-lang":"zh-CN","data-input-position":"top"})
+
+  let ele = document.createElement('script')
+  for (let key in config) {
+    ele.setAttribute(key, config[key])
+  }
+  document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function changeGiscusTheme () {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  sendMessage({
+    setConfig: {
+      theme: theme
+    }
+  });
+}
+
+if ('Giscus' === 'Giscus' || !false) {
+  if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+  else loadGiscus()
+} else {
+  function loadOtherComment () {
+    loadGiscus()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>安全和密码学 | Fu Jinlong's Blog</title><meta name="author" content="ICEFJL"><meta name="copyright" content="ICEFJL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="去年的 这节课 我们从计算机 用户 的角度探讨了增强隐私保护和安全的方法。 今年我们将关注比如散列函数、密钥生成函数、对称&#x2F;非对称密码体系这些安全和密码学的概念是如何应用于前几节课所学到的工具（Git 和 SSH）中的。 本课程不能作为计算机系统安全 (6.858) 或者 密码学 (6.857 以及 6.875) 的替代。 如果你不是密码学的专家，请不要 试图创造或者修改加密算法。从事和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全和密码学">
+<meta property="og:url" content="http://icefjl.github.io/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%AE%89%E5%85%A8%E5%92%8C%E5%AF%86%E7%A0%81%E5%AD%A6.html">
+<meta property="og:site_name" content="Fu Jinlong&#39;s Blog">
+<meta property="og:description" content="去年的 这节课 我们从计算机 用户 的角度探讨了增强隐私保护和安全的方法。 今年我们将关注比如散列函数、密钥生成函数、对称&#x2F;非对称密码体系这些安全和密码学的概念是如何应用于前几节课所学到的工具（Git 和 SSH）中的。 本课程不能作为计算机系统安全 (6.858) 或者 密码学 (6.857 以及 6.875) 的替代。 如果你不是密码学的专家，请不要 试图创造或者修改加密算法。从事和">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://icefjl.github.io/img/web/post5.webp">
+<meta property="article:published_time" content="2023-12-03T07:29:37.000Z">
+<meta property="article:modified_time" content="2024-03-24T04:47:45.000Z">
+<meta property="article:author" content="ICEFJL">
+<meta property="article:tag" content="计算机&#x2F;编程工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://icefjl.github.io/img/web/post5.webp"><link rel="shortcut icon" href="/img/web/logo.png"><link rel="canonical" href="http://icefjl.github.io/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%AE%89%E5%85%A8%E5%92%8C%E5%AF%86%E7%A0%81%E5%AD%A6.html"><link rel="preconnect" href="//fastly.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?025b5b66546875a0e89a0f8ac8d27dce";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '安全和密码学',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-24 12:47:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/all.min.css"><link rel="stylesheet" href="/css/my.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/avatar.jpg" onerror="onerror=null;src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/web/post5.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="Fu Jinlong's Blog"></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">安全和密码学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-03T07:29:37.000Z" title="发表于 2023-12-03 15:29:37">2023-12-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-24T04:47:45.000Z" title="更新于 2024-03-24 12:47:45">2024-03-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/">编程工具</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/">计算机教育缺失的一课</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="安全和密码学"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>去年的 <a target="_blank" rel="noopener" href="https://missing-semester-cn.github.io/2019/security/">这节课</a> 我们从计算机 <em>用户</em> 的角度探讨了增强隐私保护和安全的方法。 今年我们将关注比如散列函数、密钥生成函数、对称&#x2F;非对称密码体系这些安全和密码学的概念是如何应用于前几节课所学到的工具（Git 和 SSH）中的。</p>
+<p>本课程不能作为计算机系统安全 (<a target="_blank" rel="noopener" href="https://css.csail.mit.edu/6.858/">6.858</a>) 或者 密码学 (<a target="_blank" rel="noopener" href="https://courses.csail.mit.edu/6.857/">6.857</a> 以及 6.875) 的替代。 如果你不是密码学的专家，请不要 <a target="_blank" rel="noopener" href="https://www.schneier.com/blog/archives/2015/05/amateurs_produc.html">试图创造或者修改加密算法</a>。从事和计算机系统安全相关的工作同理。</p>
+<p>这节课将对一些基本的概念进行简单（但实用）的说明。 虽然这些说明不足以让你学会如何 <em>设计</em> 安全系统或者加密协议，但我们希望你可以对现在使用的程序和协议有一个大概了解。</p>
+<h1 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h1><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">熵</a>(Entropy) 度量了不确定性并可以用来决定密码的强度。</p>
+<p>熵的单位是 _比特_。对于一个均匀分布的随机离散变量，熵等于 <code>log_2(所有可能的个数，即n)</code>。 扔一次硬币的熵是 1 比特。掷一次（六面）骰子的熵大约为 2.58 比特。</p>
+<p>一般我们认为攻击者了解密码的模型（最小长度，最大长度，可能包含的字符种类等），但是不了解某个密码是如何随机选择的—— 比如 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Diceware">掷骰子</a>。</p>
+<p>使用多少比特的熵取决于应用的威胁模型。 上面的 XKCD 漫画告诉我们，大约 40 比特的熵足以对抗在线穷举攻击（受限于网络速度和应用认证机制）。 而对于离线穷举攻击（主要受限于计算速度）, 一般需要更强的密码 (比如 80 比特或更多)。</p>
+<h1 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h1><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">密码散列函数</a> (Cryptographic hash function) 可以将任意大小的数据映射为一个固定大小的输出。除此之外，还有一些其他特性。 一个散列函数的大概规范如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash(value: array&lt;byte&gt;) -&gt; vector&lt;byte, N&gt;  (N对于该函数固定)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a> 是 Git 中使用的一种散列函数， 它可以将任意大小的输入映射为一个 160 比特（可被 40 位十六进制数表示）的输出。 下面我们用 <code>sha1sum</code> 命令来测试 SHA1 对几个字符串的输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$printf &#x27;hello&#x27; | sha1sum</span><br><span class="line">aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d</span><br><span class="line">$printf &#x27;hello&#x27; | sha1sum</span><br><span class="line">aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d</span><br><span class="line">$printf &#x27;Hello&#x27; | sha1sum </span><br><span class="line">f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0</span><br></pre></td></tr></table></figure>
+
+<p>抽象地讲，散列函数可以被认为是一个不可逆，且看上去随机（但具确定性）的函数 （这就是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Random_oracle">散列函数的理想模型</a>）。 一个散列函数拥有以下特性：</p>
+<ul>
+<li>确定性：对于不变的输入永远有相同的输出。</li>
+<li>不可逆性：对于 <code>hash(m) = h</code>，难以通过已知的输出 <code>h</code> 来计算出原始输入 <code>m</code>。</li>
+<li>目标碰撞抵抗性&#x2F;弱无碰撞：对于一个给定输入 <code>m_1</code>，难以找到 <code>m_2 != m_1</code> 且 <code>hash(m_1) = hash(m_2)</code>。</li>
+<li>碰撞抵抗性&#x2F;强无碰撞：难以找到一组满足 <code>hash(m_1) = hash(m_2)</code> 的输入 <code>m_1, m_2</code>（该性质严格强于目标碰撞抵抗性）。</li>
+</ul>
+<p>注：虽然 SHA-1 还可以用于特定用途，但它已经 <a target="_blank" rel="noopener" href="https://shattered.io/">不再被认为</a> 是一个强密码散列函数。 你可参照 <a target="_blank" rel="noopener" href="https://valerieaurora.org/hash.html">密码散列函数的生命周期</a> 这个表格了解一些散列函数是何时被发现弱点及破解的。 请注意，针对应用推荐特定的散列函数超出了本课程内容的范畴。 如果选择散列函数对于你的工作非常重要，请先系统学习信息安全及密码学。</p>
+<h2 id="密码散列函数的应用"><a href="#密码散列函数的应用" class="headerlink" title="密码散列函数的应用"></a>密码散列函数的应用</h2><ul>
+<li>Git 中的内容寻址存储 (Content-addressed storage)：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hash_function">散列函数</a> 是一个宽泛的概念（存在非密码学的散列函数），那么 Git 为什么要特意使用密码散列函数？</li>
+<li>文件的信息摘要 (Message digest)：像 Linux ISO 这样的软件可以从非官方的（有时不太可信的）镜像站下载，所以需要设法确认下载的软件和官方一致。 官方网站一般会在（指向镜像站的）下载链接旁边备注安装文件的哈希值。 用户从镜像站下载安装文件后可以对照公布的哈希值来确定安装文件没有被篡改。</li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Commitment_scheme">承诺机制</a>(Commitment scheme)： 假设我希望承诺一个值，但之后再透露它—— 比如在没有一个可信的、双方可见的硬币的情况下在我的脑海中公平的 “ 扔一次硬币 “。 我可以选择一个值 <code>r = random()</code>，并和你分享它的哈希值 <code>h = sha256(r)</code>。 这时你可以开始猜硬币的正反：我们一致同意偶数 <code>r</code> 代表正面，奇数 <code>r</code> 代表反面。 你猜完了以后，我告诉你值 <code>r</code> 的内容，得出胜负。同时你可以使用 <code>sha256(r)</code> 来检查我分享的哈希值 <code>h</code> 以确认我没有作弊。</li>
+</ul>
+<h1 id="密钥生成函数"><a href="#密钥生成函数" class="headerlink" title="密钥生成函数"></a>密钥生成函数</h1><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Key_derivation_function">密钥生成函数</a> (Key Derivation Functions) 作为密码散列函数的相关概念，被应用于包括生成固定长度，可以使用在其他密码算法中的密钥等方面。 为了对抗穷举法攻击，密钥生成函数通常较慢。</p>
+<h2 id="密钥生成函数的应用"><a href="#密钥生成函数的应用" class="headerlink" title="密钥生成函数的应用"></a>密钥生成函数的应用</h2><ul>
+<li>从密码生成可以在其他加密算法中使用的密钥，比如对称加密算法（见下）。</li>
+<li>存储登录凭证时不可直接存储明文密码。</li>
+</ul>
+<blockquote>
+<p>正确的方法是针对每个用户随机生成一个 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Salt_(cryptography)">盐</a> <code>salt = random()</code>， 并存储盐，以及密钥生成函数对连接了盐的明文密码生成的哈希值 <code>KDF(password + salt)</code>。<br>在验证登录请求时，使用输入的密码连接存储的盐重新计算哈希值 <code>KDF(input + salt)</code>，并与存储的哈希值对比。</p>
+</blockquote>
+<h1 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h1><p>说到加密，可能你会首先想到隐藏明文信息。对称加密使用以下几个方法来实现这个功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">keygen() -&gt; key  (这是一个随机方法)</span><br><span class="line"></span><br><span class="line">encrypt(plaintext: array&lt;byte&gt;, key) -&gt; array&lt;byte&gt;  (输出密文)</span><br><span class="line">decrypt(ciphertext: array&lt;byte&gt;, key) -&gt; array&lt;byte&gt;  (输出明文)</span><br></pre></td></tr></table></figure>
+
+<p>加密方法 <code>encrypt()</code> 输出的密文 <code>ciphertext</code> 很难在不知道 <code>key</code> 的情况下得出明文 <code>plaintext</code>。<br>解密方法 <code>decrypt()</code> 有明显的正确性。因为功能要求给定密文及其密钥，解密方法必须输出明文：<code>decrypt(encrypt(m, k), k) = m</code>。</p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a> 是现在常用的一种对称加密系统。</p>
+<h2 id="对称加密的应用"><a href="#对称加密的应用" class="headerlink" title="对称加密的应用"></a>对称加密的应用</h2><ul>
+<li>加密不信任的云服务上存储的文件。对称加密和密钥生成函数配合起来，就可以使用密码加密文件： 将密码输入密钥生成函数生成密钥 <code>key = KDF(passphrase)</code>，然后存储 <code>encrypt(file, key)</code>。</li>
+</ul>
+<h1 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h1><p>非对称加密的 “ 非对称 “ 代表在其环境中，使用两个具有不同功能的密钥： 一个是私钥 (private key)，不向外公布；另一个是公钥 (public key)，公布公钥不像公布对称加密的共享密钥那样可能影响加密体系的安全性。<br>非对称加密使用以下几个方法来实现加密&#x2F;解密 (encrypt&#x2F;decrypt)，以及签名&#x2F;验证 (sign&#x2F;verify)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">keygen() -&gt; (public key, private key)  (这是一个随机方法)</span><br><span class="line"></span><br><span class="line">encrypt(plaintext: array&lt;byte&gt;, public key) -&gt; array&lt;byte&gt;  (输出密文)</span><br><span class="line">decrypt(ciphertext: array&lt;byte&gt;, private key) -&gt; array&lt;byte&gt;  (输出明文)</span><br><span class="line"></span><br><span class="line">sign(message: array&lt;byte&gt;, private key) -&gt; array&lt;byte&gt;  (生成签名)</span><br><span class="line">verify(message: array&lt;byte&gt;, signature: array&lt;byte&gt;, public key) -&gt; bool  (验证签名是否是由和这个公钥相关的私钥生成的)</span><br></pre></td></tr></table></figure>
+
+<p>非对称的加密&#x2F;解密方法和对称的加密&#x2F;解密方法有类似的特征。</p>
+<p>信息在非对称加密中使用 <em>公钥</em> 加密， 且输出的密文很难在不知道 <em>私钥</em> 的情况下得出明文。</p>
+<p>解密方法 <code>decrypt()</code> 有明显的正确性。 给定密文及私钥，解密方法一定会输出明文： <code>decrypt(encrypt(m, public key), private key) = m</code>。</p>
+<p>对称加密和非对称加密可以类比为机械锁。 对称加密就好比一个防盗门：只要是有钥匙的人都可以开门或者锁门。 非对称加密好比一个可以拿下来的挂锁。你可以把打开状态的挂锁（公钥）给任何一个人并保留唯一的钥匙（私钥）。这样他们将给你的信息装进盒子里并用这个挂锁锁上以后，只有你可以用保留的钥匙开锁。</p>
+<p>签名&#x2F;验证方法具有和书面签名类似的特征。</p>
+<p>在不知道 <em>私钥</em> 的情况下，不管需要签名的信息为何，很难计算出一个可以使 <code>verify(message, signature, public key)</code> 返回为真的签名。</p>
+<p>对于使用私钥签名的信息，验证方法验证和私钥相对应的公钥时一定返回为真：<code>verify(message, sign(message, private key), public key) = true</code>。</p>
+<h2 id="非对称加密的应用"><a href="#非对称加密的应用" class="headerlink" title="非对称加密的应用"></a>非对称加密的应用</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">PGP电子邮件加密</a>：用户可以将所使用的公钥在线发布，比如：PGP 密钥服务器或 <a target="_blank" rel="noopener" href="https://keybase.io/">Keybase</a>。任何人都可以向他们发送加密的电子邮件。</li>
+<li>聊天加密：像 <a target="_blank" rel="noopener" href="https://signal.org/">Signal</a> 和 <a target="_blank" rel="noopener" href="https://keybase.io/">Keybase</a> 使用非对称密钥来建立私密聊天。</li>
+<li>软件签名：Git 支持用户对提交 (commit) 和标签 (tag) 进行 GPG 签名。任何人都可以使用软件开发者公布的签名公钥验证下载的已签名软件。</li>
+</ul>
+<h2 id="密钥分发"><a href="#密钥分发" class="headerlink" title="密钥分发"></a>密钥分发</h2><p>非对称加密面对的主要挑战是，如何分发公钥并对应现实世界中存在的人或组织。</p>
+<p>Signal 的信任模型是，信任用户第一次使用时给出的身份 (trust on first use)，同时支持用户线下 (out-of-band)、面对面交换公钥（Signal 里的 safety number）。</p>
+<p>PGP 使用的是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Web_of_trust">信任网络</a>。简单来说，如果我想加入一个信任网络，则必须让已经在信任网络中的成员对我进行线下验证，比如对比证件。验证无误后，信任网络的成员使用私钥对我的公钥进行签名。这样我就成为了信任网络的一部分。只要我使用签名过的公钥所对应的私钥就可以证明 “ 我是我 “。</p>
+<p>Keybase 主要使用 <a target="_blank" rel="noopener" href="https://keybase.io/blog/chat-apps-softer-than-tofu">社交网络证明 (social proof)</a>，和一些别的精巧设计。</p>
+<p>每个信任模型有它们各自的优点：我们（讲师）更倾向于 Keybase 使用的模型。</p>
+<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><h2 id="密码管理器"><a href="#密码管理器" class="headerlink" title="密码管理器"></a>密码管理器</h2><p>每个人都应该尝试使用密码管理器，比如 <a target="_blank" rel="noopener" href="https://keepassxc.org/">KeePassXC</a>、<a target="_blank" rel="noopener" href="https://www.passwordstore.org/">pass</a> 和 <a target="_blank" rel="noopener" href="https://1password.com/">1Password</a>)。</p>
+<p>密码管理器会帮助你对每个网站生成随机且复杂（表现为高熵）的密码，并使用你指定的主密码配合密钥生成函数来对称加密它们。</p>
+<p>你只需要记住一个复杂的主密码，密码管理器就可以生成很多复杂度高且不会重复使用的密码。密码管理器通过这种方式降低密码被猜出的可能，并减少网站信息泄露后对其他网站密码的威胁。</p>
+<h2 id="两步验证（双因子验证）"><a href="#两步验证（双因子验证）" class="headerlink" title="两步验证（双因子验证）"></a>两步验证（双因子验证）</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Multi-factor_authentication">两步验证</a>(2FA) 要求用户同时使用密码（” 你知道的信息 “）和一个身份验证器（” 你拥有的物品 “，比如 <a target="_blank" rel="noopener" href="https://www.yubico.com/">YubiKey</a>）来消除密码泄露或者 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Phishing">钓鱼攻击</a> 的威胁。</p>
+<h2 id="全盘加密"><a href="#全盘加密" class="headerlink" title="全盘加密"></a>全盘加密</h2><p>对笔记本电脑的硬盘进行全盘加密是防止因设备丢失而信息泄露的简单且有效方法。 Linux 的 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_a_non-root_file_system">cryptsetup + LUKS</a>， Windows 的 <a target="_blank" rel="noopener" href="https://fossbytes.com/enable-full-disk-encryption-windows-10/">BitLocker</a>，或者 macOS 的 <a target="_blank" rel="noopener" href="https://support.apple.com/en-us/HT204837">FileVault</a> 都使用一个由密码保护的对称密钥来加密盘上的所有信息。</p>
+<h2 id="聊天加密"><a href="#聊天加密" class="headerlink" title="聊天加密"></a>聊天加密</h2><p><a target="_blank" rel="noopener" href="https://signal.org/">Signal</a> 和 <a target="_blank" rel="noopener" href="https://keybase.io/">Keybase</a> 使用非对称加密对用户提供端到端 (End-to-end) 安全性。</p>
+<p>获取联系人的公钥非常关键。为了保证安全性，应使用线下方式验证 Signal 或者 Keybase 的用户公钥，或者信任 Keybase 用户提供的社交网络证明。</p>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p>当你运行 <code>ssh-keygen</code> 命令，它会生成一个非对称密钥对：公钥和私钥 <code>(public_key, private_key)</code>。 生成过程中使用的随机数由系统提供的熵决定。这些熵可以来源于硬件事件 (hardware events) 等。 公钥最终会被分发，它可以直接明文存储。 但是为了防止泄露，私钥必须加密存储。<code>ssh-keygen</code> 命令会提示用户输入一个密码，并将它输入密钥生成函数 产生一个密钥。最终，<code>ssh-keygen</code> 使用对称加密算法和这个密钥加密私钥。</p>
+<p>在实际运用中，当服务器已知用户的公钥（存储在 <code>.ssh/authorized_keys</code> 文件中，一般在用户 HOME 目录下），尝试连接的客户端可以使用非对称签名来证明用户的身份——这便是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication">挑战应答方式</a>。 简单来说，服务器选择一个随机数字发送给客户端。客户端使用用户私钥对这个数字信息签名后返回服务器。 服务器随后使用 <code>.ssh/authorized_keys</code> 文件中存储的用户公钥来验证返回的信息是否由所对应的私钥所签名。这种验证方式可以有效证明试图登录的用户持有所需的私钥。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://missing-semester-cn.github.io/2019/security/">去年的讲稿</a>: 更注重于计算机用户可以如何增强隐私保护和安全</li>
+<li><a target="_blank" rel="noopener" href="https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html">Cryptographic Right Answers</a>: 解答了在一些应用环境下 “ 应该使用什么加密？” 的问题</li>
+</ul>
+<h1 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h1><p><a target="_blank" rel="noopener" href="https://missing-semester-cn.github.io/missing-notes-and-solutions/2020/solutions//security-solution">习题解答</a></p>
+<ol>
+<li><p><strong>熵</strong></p>
+<ol>
+<li><p>假设一个密码是由四个小写的单词拼接组成，每个单词都是从一个含有 10 万单词的字典中随机选择，且每个单词选中的概率相同。 一个符合这样构造的例子是 <code>correcthorsebatterystaple</code>。这个密码有多少比特的熵？</p>
+</li>
+<li><p>假设另一个密码是用八个随机的大小写字母或数字组成。一个符合这样构造的例子是 <code>rg8Ql34g</code>。这个密码又有多少比特的熵？</p>
+</li>
+<li><p>哪一个密码更强？</p>
+</li>
+<li><p>假设一个攻击者每秒可以尝试 1 万个密码，这个攻击者需要多久可以分别破解上述两个密码？</p>
+</li>
+</ol>
+</li>
+<li><p><strong>密码散列函数</strong> 从 <a target="_blank" rel="noopener" href="https://www.debian.org/CD/http-ftp/">Debian镜像站</a> 下载一个光盘映像（比如这个来自阿根廷镜像站的 <a target="_blank" rel="noopener" href="http://debian.xfree.com.ar/debian-cd/10.2.0/amd64/iso-cd/debian-10.2.0-amd64-netinst.iso">映像</a>）。使用 <code>sha256sum</code> 命令对比下载映像的哈希值和官方 Debian 站公布的哈希值。如果你下载了上面的映像，官方公布的哈希值可以参考 <a target="_blank" rel="noopener" href="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS">这个文件</a>。</p>
+</li>
+<li><p><strong>对称加密</strong> 使用 <a target="_blank" rel="noopener" href="https://www.openssl.org/">OpenSSL</a> 的 AES 模式加密一个文件: <code>openssl aes-256-cbc -salt -in &#123;源文件名&#125; -out &#123;加密文件名&#125;</code>。 使用 <code>cat</code> 或者 <code>hexdump</code> 对比源文件和加密的文件，再用 <code>openssl aes-256-cbc -d -in &#123;加密文件名&#125; -out &#123;解密文件名&#125;</code> 命令解密刚刚加密的文件。最后使用 <code>cmp</code> 命令确认源文件和解密后的文件内容相同。</p>
+</li>
+<li><p><strong>非对称加密</strong></p>
+<ol>
+<li><p>在你自己的电脑上使用更安全的 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/SSH_keys#Ed25519">ED25519算法</a> 生成一组 <a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2">SSH 密钥对</a>。为了确保私钥不使用时的安全，一定使用密码加密你的私钥。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages">配置GPG</a>。</p>
+</li>
+<li><p>给 Anish 发送一封加密的电子邮件（<a target="_blank" rel="noopener" href="https://keybase.io/anish">Anish的公钥</a>）。</p>
+</li>
+<li><p>使用 <code>git commit -S</code> 命令签名一个 Git 提交，并使用 <code>git show --show-signature</code> 命令验证这个提交的签名。或者，使用 <code>git tag -s</code> 命令签名一个 Git 标签，并使用 <code>git tag -v</code> 命令验证标签的签名。</p>
+</li>
+</ol>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://icefjl.github.io">ICEFJL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://icefjl.github.io/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%AE%89%E5%85%A8%E5%92%8C%E5%AF%86%E7%A0%81%E5%AD%A6.html">http://icefjl.github.io/posts/编程工具/计算机教育缺失的一课/安全和密码学.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://icefjl.github.io" target="_blank">Fu Jinlong's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/">计算机/编程工具</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%A4%A7%E6%9D%82%E7%83%A9.html" title="大杂烩"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post9.webp" onerror="onerror=null;src='/img/web/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">大杂烩</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%85%83%E7%BC%96%E7%A8%8B.html" title="元编程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post6.webp" onerror="onerror=null;src='/img/web/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">元编程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%85%83%E7%BC%96%E7%A8%8B.html" title="元编程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post6.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-03</div><div class="title">元编程</div></div></a></div><div><a href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83.html" title="命令行环境"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post1.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-03</div><div class="title">命令行环境</div></div></a></div><div><a href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%A4%A7%E6%9D%82%E7%83%A9.html" title="大杂烩"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post9.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-03</div><div class="title">大杂烩</div></div></a></div><div><a href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.html" title="版本控制"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-03</div><div class="title">版本控制</div></div></a></div><div><a href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86.html" title="数据整理"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post3.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-03</div><div class="title">数据整理</div></div></a></div><div><a href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E8%B0%83%E8%AF%95%E4%B8%8E%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90.html" title="调试与性能分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-03</div><div class="title">调试与性能分析</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/avatar.jpg" onerror="this.onerror=null;this.src='/img/web/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ICEFJL</div><div class="author-info__description">Fu Jinlong's Blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/icefjl"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:fujinlong24@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%86%B5"><span class="toc-number">1.</span> <span class="toc-text">熵</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">散列函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">密码散列函数的应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">密钥生成函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">密钥生成函数的应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-number">4.</span> <span class="toc-text">对称加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">4.1.</span> <span class="toc-text">对称加密的应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-number">5.</span> <span class="toc-text">非对称加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">5.1.</span> <span class="toc-text">非对称加密的应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91"><span class="toc-number">5.2.</span> <span class="toc-text">密钥分发</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">6.</span> <span class="toc-text">案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">6.1.</span> <span class="toc-text">密码管理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%81%EF%BC%88%E5%8F%8C%E5%9B%A0%E5%AD%90%E9%AA%8C%E8%AF%81%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">两步验证（双因子验证）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E7%9B%98%E5%8A%A0%E5%AF%86"><span class="toc-number">6.3.</span> <span class="toc-text">全盘加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%8A%E5%A4%A9%E5%8A%A0%E5%AF%86"><span class="toc-number">6.4.</span> <span class="toc-text">聊天加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH"><span class="toc-number">6.5.</span> <span class="toc-text">SSH</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%84%E6%BA%90"><span class="toc-number">7.</span> <span class="toc-text">资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text">课后练习</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/%E6%9C%AC%E5%9C%B0/nix%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html" title="nix包管理器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post5.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="nix包管理器"/></a><div class="content"><a class="title" href="/posts/%E6%9C%AC%E5%9C%B0/nix%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8.html" title="nix包管理器">nix包管理器</a><time datetime="2024-01-02T10:35:10.000Z" title="发表于 2024-01-02 18:35:10">2024-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E6%9C%AC%E5%9C%B0/%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84.html" title="键盘按键映射"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post6.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="键盘按键映射"/></a><div class="content"><a class="title" href="/posts/%E6%9C%AC%E5%9C%B0/%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84.html" title="键盘按键映射">键盘按键映射</a><time datetime="2023-12-28T15:05:50.000Z" title="发表于 2023-12-28 23:05:50">2023-12-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Ubuntu%E4%B8%8Bbochs%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4.html" title="Ubuntu下bochs安装步骤"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post5.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="Ubuntu下bochs安装步骤"/></a><div class="content"><a class="title" href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Ubuntu%E4%B8%8Bbochs%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4.html" title="Ubuntu下bochs安装步骤">Ubuntu下bochs安装步骤</a><time datetime="2023-12-10T10:13:34.000Z" title="发表于 2023-12-10 18:13:34">2023-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%BD%91%E7%BB%9C/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/ssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8.html" title="ssh连接服务器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post7.jpg" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="ssh连接服务器"/></a><div class="content"><a class="title" href="/posts/%E7%BD%91%E7%BB%9C/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/ssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8.html" title="ssh连接服务器">ssh连接服务器</a><time datetime="2023-12-10T07:55:58.000Z" title="发表于 2023-12-10 15:55:58">2023-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%A4%A7%E6%9D%82%E7%83%A9.html" title="大杂烩"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/web/post9.webp" onerror="this.onerror=null;this.src='/img/web/404.jpg'" alt="大杂烩"/></a><div class="content"><a class="title" href="/posts/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%99%E8%82%B2%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE/%E5%A4%A7%E6%9D%82%E7%83%A9.html" title="大杂烩">大杂烩</a><time datetime="2023-12-03T07:37:14.000Z" title="发表于 2023-12-03 15:37:14">2023-12-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/web/post5.webp')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By ICEFJL</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://fastly.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadGiscus () {
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  const config = Object.assign({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'icefjl/icefjl.github.io',
+    'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzOTEwMjIzNzg=',
+    'data-category-id': 'DIC_kwDOF06HKs4CYIVf',
+    'data-mapping': 'pathname',
+    'data-theme': nowTheme,
+    'data-reactions-enabled': '1',
+    crossorigin: 'anonymous',
+    async: true
+  },{"data-strict":1,"data-lang":"zh-CN","data-input-position":"top"})
+
+  let ele = document.createElement('script')
+  for (let key in config) {
+    ele.setAttribute(key, config[key])
+  }
+  document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function changeGiscusTheme () {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  sendMessage({
+    setConfig: {
+      theme: theme
+    }
+  });
+}
+
+if ('Giscus' === 'Giscus' || !false) {
+  if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+  else loadGiscus()
+} else {
+  function loadOtherComment () {
+    loadGiscus()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
